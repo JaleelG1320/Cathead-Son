@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterSwap : MonoBehaviour
 {
@@ -17,29 +18,27 @@ public class CharacterSwap : MonoBehaviour
         Swap();
     }
 
-    private void Update()
+    public void SwapCharacterPrev()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
-            Swap();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            whichCharacter = (whichCharacter + 1) % possibleCharacters.Count;
-            Swap();
-        }
+        whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
+        Swap();
+    }
+
+    public void SwapCharacterNext()
+    {
+        whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
+        Swap();
     }
 
     public void Swap()
     {
         character = possibleCharacters[whichCharacter];
-        character.GetComponent<PlayerController>().enabled = true;
+        character.GetComponent<ThirdPersonController>().enabled = true;
         for(int  i = 0; i < possibleCharacters.Count; i++)
         {
             if(possibleCharacters[i] != character)
             {
-                possibleCharacters[i].GetComponent<PlayerController>().enabled = false;
+                possibleCharacters[i].GetComponent<ThirdPersonController>().enabled = false;
             }
         }
 
