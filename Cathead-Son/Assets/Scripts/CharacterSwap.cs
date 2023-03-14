@@ -9,7 +9,7 @@ public class CharacterSwap : MonoBehaviour
     public Transform character;
     public List<Transform> possibleCharacters;
     public int whichCharacter;
-    public CinemachineVirtualCamera cVirCam;
+    public CinemachineFreeLook cVirCam;
 
     private void Start()
     {
@@ -39,7 +39,8 @@ public class CharacterSwap : MonoBehaviour
         character = possibleCharacters[whichCharacter];
         character.GetComponent<ThirdPersonController>().enabled = true;
         cVirCam.Follow = character;
-        for(int  i = 0; i < possibleCharacters.Count; i++)
+        cVirCam.LookAt = character;
+        for (int  i = 0; i < possibleCharacters.Count; i++)
         {
             if(possibleCharacters[i] != character)
             {
