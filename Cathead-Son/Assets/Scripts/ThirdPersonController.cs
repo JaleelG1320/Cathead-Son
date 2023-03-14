@@ -11,14 +11,12 @@ public class ThirdPersonController : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 move;
 
+    public static CharacterSwap swap;
+
     // Movement Fields
     private Rigidbody rb;
     [SerializeField]
     private float movementForce = 1f;
-    [SerializeField]
-    private float jumpForce = 5f;
-    [SerializeField]
-    private float maxSpeed = 5f;
     private Vector3 forceDirection = Vector3.zero;
 
     [SerializeField]
@@ -28,6 +26,9 @@ public class ThirdPersonController : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+        if (swap == null)
+            swap = GetComponentInParent<CharacterSwap>();
+
     }
 
     private void OnEnable()
@@ -67,6 +68,18 @@ public class ThirdPersonController : MonoBehaviour
 
     public void DoInteract(InputAction.CallbackContext obj)
     {
+    }
+
+    public void DoSwapCharNext(InputAction.CallbackContext obj)
+    {
+        if (obj.started)
+            swap.SwapCharacterNext();
+    }
+
+    public void DoSwapCharPrev(InputAction.CallbackContext obj)
+    {
+        if (obj.started)
+            swap.SwapCharacterPrev();
     }
 
     public void DoMove(InputAction.CallbackContext obj)

@@ -114,8 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementForce: 1
-  jumpForce: 5
-  maxSpeed: 5
   playerCamera: {fileID: 0}
 --- !u!54 &7454132324671294019
 Rigidbody:
@@ -196,10 +194,10 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterSwap, Assembly-CSharp
-        m_MethodName: SwapCharacterNext
-        m_Mode: 1
+      - m_Target: {fileID: 7454132324671294028}
+        m_TargetAssemblyTypeName: ThirdPersonController, Assembly-CSharp
+        m_MethodName: DoSwapCharNext
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -212,10 +210,10 @@ MonoBehaviour:
     m_ActionName: Player/SwapCharacterNext[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterSwap, Assembly-CSharp
-        m_MethodName: SwapCharacterPrev
-        m_Mode: 1
+      - m_Target: {fileID: 7454132324671294028}
+        m_TargetAssemblyTypeName: ThirdPersonController, Assembly-CSharp
+        m_MethodName: DoSwapCharPrev
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
