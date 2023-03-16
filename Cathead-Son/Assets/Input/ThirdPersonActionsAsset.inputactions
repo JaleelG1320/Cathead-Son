@@ -33,18 +33,45 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwapCharacterNext",
+                    "name": "Swap",
                     "type": "Button",
-                    "id": "c051ea9a-b9ed-4803-84cf-412eb2dc2abd",
+                    "id": "c6f16cf5-81d3-49f8-80ba-30d01115d82d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwapCharacterPrev",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "c6f16cf5-81d3-49f8-80ba-30d01115d82d",
+                    "id": "78ae92f7-4780-4be9-afb3-c79b2dc96374",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "a5941c8c-0dff-4a81-a621-432d64cc07ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "ea2aa92b-84b5-4b4e-8f98-ecbf78d9d56a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "0f7af2e6-9638-411d-add7-7b1c59c2ee03",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -64,7 +91,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "Move",
                     "id": "ac49f01d-4efc-470c-afdb-b3c075d9f0a2",
                     "path": "2DVector",
                     "interactions": "",
@@ -121,7 +148,7 @@
                 {
                     "name": "",
                     "id": "6977e04c-ba26-44a0-9ddf-86ec265379e2",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -132,7 +159,7 @@
                 {
                     "name": "",
                     "id": "6b110082-0a36-48c5-b8d8-1195e3ebf853",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -164,34 +191,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1ad354fd-b985-4f35-b8c4-53c3496f2364",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapCharacterNext",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae086f28-4048-4d9c-8f4d-9cfb8491097d",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapCharacterNext",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "56024528-17dd-4884-812e-37e703e5dd96",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwapCharacterPrev",
+                    "action": "Swap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -202,7 +207,134 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwapCharacterPrev",
+                    "action": "Swap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "981abde2-ba8f-45f4-91f9-9efd8120d69b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21a4ed4e-2206-4ba0-a6d5-4a6445e2dde5",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6883fb11-695d-4215-8287-1c36ab894f37",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4e71e55-6f6b-4924-b303-12dffc17bd54",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e39d8f4-219a-4b3b-bb79-a2197218e786",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e221cab7-f124-4b53-a272-f2270d5924b3",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71daec4e-a17c-4beb-b8f6-be6273320504",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eda46dad-16ec-45ce-8428-ed4c7f5a1e6f",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "38f72b1a-ad10-43f4-a718-eadd0f7ebcff",
+            "actions": [
+                {
+                    "name": "Resume",
+                    "type": "Button",
+                    "id": "c2f4f47b-80d7-4c6e-aa84-702fb9e28b47",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0d2d683c-59c2-4cfc-809e-b4e8d79d91f7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8baf7ca3-7b5b-4a6d-958f-604db9e9bb87",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
