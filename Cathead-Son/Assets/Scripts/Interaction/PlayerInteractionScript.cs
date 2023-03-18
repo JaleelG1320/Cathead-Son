@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-    [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-    [RequireComponent(typeof(PlayerInput))]
-#endif
 public class PlayerInteractionScript : MonoBehaviour
 {
     [Header("Interaction")]
@@ -31,23 +27,25 @@ public class PlayerInteractionScript : MonoBehaviour
     void Update()
     {
         HandleInteractionCheck();
-        HandleInteractionInput();
     }
 
     private void HandleInteractionCheck()
     {
+        Debug.Log("Calling the function");
         interactableObjectsInArea = Physics.OverlapSphere(gameObject.transform.position, interactionDistance, interactionLayer);
         if (interactableObjectsInArea.Length > 0)
         {
             foreach (Collider collider in interactableObjectsInArea)
             {
+                Debug.Log("Its in the array");
                 if (collider.gameObject.layer == 6 && (currentInteractableObject == null || collider.gameObject.GetInstanceID() != currentInteractableObject.GetInstanceID()))
                 {
                     collider.TryGetComponent(out currentInteractableObject);
 
                     if (currentInteractableObject)
                     {
-                            currentInteractableObject.OnFocus();
+                        Debug.Log("Can see the object");
+                        currentInteractableObject.OnFocus();
                     }
                 }
                     
@@ -62,17 +60,14 @@ public class PlayerInteractionScript : MonoBehaviour
                 
     }
 
-    private void HandleInteractionInput()
+    public void HandleInteractionInput(InputAction.CallbackContext obj)
     {
         foreach (Collider collider in interactableObjectsInArea)
         {
-            //needs fix to work with input system used for new game
-            /*
-            if (_input.interact && currentInteractableObject != null && Vector3.Distance(currentInteractableObject.transform.position, gameObject.transform.position) < 1.7f)
+            if (obj.started && currentInteractableObject != null && Vector3.Distance(currentInteractableObject.transform.position, gameObject.transform.position) < 5.7f)
             {
                 currentInteractableObject.OnInteract();
             }
-            */
         }
             
     }
