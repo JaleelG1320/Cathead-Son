@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7454132324671294028}
   - component: {fileID: 7454132324671294019}
   - component: {fileID: 7454132324671294018}
-  - component: {fileID: 7292660718800307026}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -194,7 +193,19 @@ MonoBehaviour:
     m_ActionId: 334cf21e-c701-4daa-9029-4d23d80decf1
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7454132324671294028}
+        m_TargetAssemblyTypeName: ThirdPersonController, Assembly-CSharp
+        m_MethodName: DoSwapCharNext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c051ea9a-b9ed-4803-84cf-412eb2dc2abd
     m_ActionName: Player/SwapCharacterNext[/Keyboard/e]
   - m_PersistentCalls:
@@ -218,16 +229,3 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!135 &7292660718800307026
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454132324671294026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Center: {x: 0, y: 0, z: 0}
