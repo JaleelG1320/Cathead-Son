@@ -27,17 +27,18 @@ public class CharacterSwap : MonoBehaviour
         Swap();
     }
 
-    public void SwapCharacterNext()
-    {
-        Debug.Log("test swap next");
-        whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
-        Swap();
-    }
+    //public void SwapCharacterNext()
+    //{
+    //    Debug.Log("test swap next");
+    //    whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
+    //    Swap();
+    //}
 
     public void Swap()
     {
         character = possibleCharacters[whichCharacter];
         character.GetComponent<ThirdPersonController>().enabled = true;
+        HidingSpot.UpdatePlayer(character);
         cVirCam.Follow = character;
         cVirCam.LookAt = character;
         for (int  i = 0; i < possibleCharacters.Count; i++)

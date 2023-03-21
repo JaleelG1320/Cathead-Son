@@ -48,7 +48,6 @@ public class PlayerInteractionScript : MonoBehaviour
                         currentInteractableObject.OnFocus();
                     }
                 }
-                    
             }
         }
         else if (currentInteractableObject)

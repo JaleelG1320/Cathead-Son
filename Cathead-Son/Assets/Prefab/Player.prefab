@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7454132324671294028}
   - component: {fileID: 7454132324671294019}
   - component: {fileID: 7454132324671294018}
+  - component: {fileID: 51700123474544791}
+  - component: {fileID: 4257688703279666426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,17 +188,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 78e64743-cb1f-4be8-a14e-175b9c894db4
-    m_ActionName: Player/Interact[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 334cf21e-c701-4daa-9029-4d23d80decf1
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7454132324671294028}
-        m_TargetAssemblyTypeName: ThirdPersonController, Assembly-CSharp
-        m_MethodName: DoSwapCharNext
+      - m_Target: {fileID: 51700123474544791}
+        m_TargetAssemblyTypeName: PlayerInteractionScript, Assembly-CSharp
+        m_MethodName: HandleInteractionInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -206,8 +200,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c051ea9a-b9ed-4803-84cf-412eb2dc2abd
-    m_ActionName: Player/SwapCharacterNext[/Keyboard/e]
+    m_ActionId: 78e64743-cb1f-4be8-a14e-175b9c894db4
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 334cf21e-c701-4daa-9029-4d23d80decf1
+    m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7454132324671294028}
@@ -224,8 +222,72 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c6f16cf5-81d3-49f8-80ba-30d01115d82d
     m_ActionName: Player/SwapCharacterPrev[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7454132324671294028}
+        m_TargetAssemblyTypeName: ThirdPersonController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 78ae92f7-4780-4be9-afb3-c79b2dc96374
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a5941c8c-0dff-4a81-a621-432d64cc07ab
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ea2aa92b-84b5-4b4e-8f98-ecbf78d9d56a
+    m_ActionName: Player/Sprint[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0f7af2e6-9638-411d-add7-7b1c59c2ee03
+    m_ActionName: Player/Crouch[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2f4f47b-80d7-4c6e-aa84-702fb9e28b47
+    m_ActionName: UI/Resume[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &51700123474544791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454132324671294026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcbe391d0d61a041b7d887d441208d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRayPoint: {x: 0, y: 0, z: 0}
+  interactionDistance: 16
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerCamera: {fileID: 0}
+  publicInteractionDistance: 0
+--- !u!135 &4257688703279666426
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454132324671294026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
