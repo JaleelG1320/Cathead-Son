@@ -79,11 +79,17 @@ public class ThirdPersonController : MonoBehaviour
         if (closestInteractable is not null)
             isHiding = !isHiding;
     }
-
+        
     public void DoSwapCharPrev(InputAction.CallbackContext obj)
     {
         if (obj.started)
             swap.SwapCharacterPrev();
+    }
+
+    public void OnPause(InputAction.CallbackContext obj)
+    {
+        if (obj.started)
+            Application.Quit();
     }
 
     public void DoMove(InputAction.CallbackContext obj)

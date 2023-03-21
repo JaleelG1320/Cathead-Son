@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827829553721090212}
-  m_LocalRotation: {x: -0.018141465, y: -0.000000029802326, z: -0.000000022351744, w: 0.99983543}
+  m_LocalRotation: {x: -0.018141478, y: -0.000000059604645, z: 0.000000014901161, w: 0.99983543}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -229,7 +229,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666289600647820474}
-  m_LocalRotation: {x: 0.01818946, y: -0.000000029802322, z: -0.000000014901161, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189447, y: -0, z: -0.000000037252907, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -307,7 +307,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4602594447386841399}
-  m_LocalRotation: {x: -0.000000014901161, y: -0.000000029802322, z: -0.000000037252903, w: 1}
+  m_LocalRotation: {x: -0.000000014901161, y: -0.000000029802322, z: -0.000000022351742, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -740,7 +740,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9046179381852175127}
-  m_LocalRotation: {x: 0.23487766, y: -0.48695776, z: 0.13782084, w: 0.82988554}
+  m_LocalRotation: {x: 0.23487768, y: -0.48695776, z: 0.13782084, w: 0.82988554}
   m_LocalPosition: {x: 5.5028896, y: 5.77, z: -4.046624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1072,14 +1072,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[8].m_ActionName
       value: UI/Resume[/Keyboard/escape]
       objectReference: {fileID: 0}
-    - target: {fileID: 4340602090181414841, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340602090181414841, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DoSwapCharPrev
-      objectReference: {fileID: 0}
     - target: {fileID: 8136609911271940183, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
       propertyPath: playerCamera
       value: 
@@ -1157,14 +1149,6 @@ PrefabInstance:
     - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
       propertyPath: m_ActionEvents.Array.data[8].m_ActionName
       value: UI/Resume[/Keyboard/escape]
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DoSwapCharPrev
       objectReference: {fileID: 0}
     - target: {fileID: 7454132324671294026, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
       propertyPath: m_Name
