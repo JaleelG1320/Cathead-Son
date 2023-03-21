@@ -245,7 +245,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    public void HandlePause(InputAction.CallbackContext action)
+    {
+        Application.Quit();
+    }
 
     // Update is called once per frame
     void Update()
