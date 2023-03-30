@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool canHeadBob = true;
     [SerializeField] private bool willSlideOnSlopes = true;
-    [SerializeField] private bool canZoom = true;
+    ///[SerializeField] private bool canZoom = true;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
     [SerializeField] private bool useStamina = true;

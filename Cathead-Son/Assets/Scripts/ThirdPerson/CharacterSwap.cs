@@ -16,6 +16,7 @@ public class CharacterSwap : MonoBehaviour
         if(character == null && possibleCharacters.Count == 1)
         {
             character = possibleCharacters[0];
+            character.gameObject.tag = "CurrentPlayer";
         }
         Swap();
     }
@@ -41,6 +42,7 @@ public class CharacterSwap : MonoBehaviour
         HidingSpot.UpdatePlayer(character);
         cVirCam.Follow = character;
         cVirCam.LookAt = character;
+        character.gameObject.tag = "CurrentPlayer";
         for (int  i = 0; i < possibleCharacters.Count; i++)
         {
             if(possibleCharacters[i] != character)

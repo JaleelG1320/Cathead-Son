@@ -10,6 +10,7 @@ public class ThirdPersonController : MonoBehaviour
     // Input Fields
     private PlayerInput playerInput;
     private Vector2 move;
+    private Vector2 look;
 
     public static CharacterSwap swap;
 
@@ -25,6 +26,7 @@ public class ThirdPersonController : MonoBehaviour
     Interactable closestInteractable;
     private bool isHiding;
     private SphereCollider interactionSphere;
+    [SerializeField] private HackingInteractableScript _hackingTerminalReference;
 
     private void Awake()
     {
@@ -48,14 +50,17 @@ public class ThirdPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_hackingTerminalReference.isPlayingMinigame)
+        {
+            forceDirection += move.x * GetCameraRight(playerCamera) * movementForce;
+            forceDirection += move.y * GetCameraForward(playerCamera) * movementForce;
+
+            rb.AddForce(forceDirection, ForceMode.Impulse);
+            forceDirection = Vector3.zero;
+
+            LookAt();
+        }
         
-        forceDirection += move.x * GetCameraRight(playerCamera) * movementForce;
-        forceDirection += move.y * GetCameraForward(playerCamera) * movementForce;
-
-        rb.AddForce(forceDirection, ForceMode.Impulse);
-        forceDirection = Vector3.zero;
-
-        LookAt();
     }
     private Vector3 GetCameraForward(Camera playerCamera)
     {
@@ -89,6 +94,11 @@ public class ThirdPersonController : MonoBehaviour
     public void DoMove(InputAction.CallbackContext obj)
     {
         move = obj.ReadValue<Vector2>();
+    }
+
+    public void DoLook(InputAction.CallbackContext obj)
+    {
+        look = obj.ReadValue<Vector2>();
     }
 
     public void LookAt()
