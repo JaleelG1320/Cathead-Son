@@ -8,6 +8,8 @@ public class EnemyIdle : EnemyBaseState
     public GameObject enemyReference;
     private Rigidbody rb;
     private NavMeshAgent navMeshAgent;
+    public GameObject playerReference;
+     public CharacterSwap swapReference;
     private int destinationPoint = 0;
     public Transform[] points;
     public FieldOfViewScript fovReference;
@@ -16,6 +18,8 @@ public class EnemyIdle : EnemyBaseState
     public override void EnterState(FieldOfViewScript enemy)
     {
         enemyReference = GameObject.FindGameObjectWithTag("Enemy");
+        swapReference = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<CharacterSwap>();
+        playerReference = swapReference.currentPlayer;
         navMeshAgent = enemyReference.GetComponent<NavMeshAgent>();
         fovReference = enemyReference.GetComponent<FieldOfViewScript>();
         points = fovReference.idlePositions;

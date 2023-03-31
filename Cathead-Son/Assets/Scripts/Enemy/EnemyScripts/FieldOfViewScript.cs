@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class FieldOfViewScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class FieldOfViewScript : MonoBehaviour
     [Range(0, 360)] public float angle;
 
     public GameObject playerRef;
+    public CharacterSwap swapReference;
     private PlayerController controllerRef;
     public Sprite enemyIdleImage;
     public Sprite enemyWalkingImage;
@@ -32,7 +34,6 @@ public class FieldOfViewScript : MonoBehaviour
     EnemyWalking enemyWalkingReference = new EnemyWalking();
     EnemyRunning enemyRunningReference = new EnemyRunning();
     EnemyIdle enemyIdleReference = new EnemyIdle();
-    EnemyStunned enemyStunnedReference = new EnemyStunned();  
     public Transform[] idlePositions;
     public bool currentlySwitching;
     private Animator animator;
@@ -45,50 +46,50 @@ public class FieldOfViewScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerRef = GameObject.FindGameObjectWithTag("CurrentPlayer");
         controllerRef = playerRef.GetComponent<PlayerController>();
         enemyBaseState = enemyIdleReference;
         canvasImage.sprite = enemyIdleImage;
         enemyBaseState.EnterState(this);
         StartCoroutine(FOVRoutine());
         currentlySwitching = false;
-        animator = gameObject.GetComponentInChildren<Animator>();
-        animator.SetBool("isIdle", true);
+        //animator = gameObject.GetComponentInChildren<Animator>();
+        //animator.SetBool("isIdle", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (canHearPlayer && (controllerRef.currentInput != Vector2.zero || !controllerRef.isCrouching))
+        playerRef = swapReference.currentPlayer; 
+        Debug.Log("canHearPlayer is: " + canHearPlayer);
+        Debug.Log("canSeePlayer is: " + canSeePlayer);
+        Debug.Log("isIdle is: " + isIdle);
+
+
+        if (canHearPlayer && !(playerRef.GetComponent<ThirdPersonController>().forceDirection.normalized == Vector3.zero))
         {
             isIdle = false;
             SwitchState(enemyWalkingReference);
             canvasImage.sprite = enemyWalkingImage;
-            animator.SetBool("isIdle", false);
-            animator.SetBool("isWalking", true);
+            //animator.SetBool("isIdle", false);
+            //animator.SetBool("isWalking", true);
             if (canSeePlayer)
             {
                 isIdle = false;
                 SwitchState(enemyRunningReference);
                 canvasImage.sprite = enemyRunningImage;
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isWalking", false);
+                //animator.SetBool("isRunning", true);
+                //animator.SetBool("isWalking", false);
             }
         }
         else
         {
+            isIdle = true;
             SwitchState(enemyIdleReference);
             canvasImage.sprite = enemyIdleImage;
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isIdle", true);
-        }
-
-        if (isStunned)
-        {
-            SwitchState(enemyStunnedReference);
-            canvasImage.sprite = enemyStunnedImage;
+            //animator.SetBool("isRunning", false);
+            //animator.SetBool("isWalking", false);
+            //animator.SetBool("isIdle", true);
         }
 
         canvasImage.transform.LookAt(playerRef.transform);
@@ -132,7 +133,7 @@ public class FieldOfViewScript : MonoBehaviour
             }
             else 
             {
-                canSeePlayer = true;
+                canSeePlayer = false;
             }
         }
         else if (canSeePlayer)
@@ -193,7 +194,7 @@ public class FieldOfViewScript : MonoBehaviour
         {
             isStunned = true;
         }
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "CurrentPlayer")
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

@@ -11,12 +11,15 @@ public class CharacterSwap : MonoBehaviour
     public int whichCharacter;
     public CinemachineFreeLook cVirCam;
 
+    [HideInInspector] public GameObject currentPlayer;
+
     private void Start()
     {
         if(character == null && possibleCharacters.Count == 1)
         {
             character = possibleCharacters[0];
             character.gameObject.tag = "CurrentPlayer";
+            currentPlayer = character.gameObject;
         }
         Swap();
     }
@@ -43,6 +46,7 @@ public class CharacterSwap : MonoBehaviour
         cVirCam.Follow = character;
         cVirCam.LookAt = character;
         character.gameObject.tag = "CurrentPlayer";
+        currentPlayer = character.gameObject;
         for (int  i = 0; i < possibleCharacters.Count; i++)
         {
             if(possibleCharacters[i] != character)

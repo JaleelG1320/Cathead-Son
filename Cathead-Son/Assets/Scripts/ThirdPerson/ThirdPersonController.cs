@@ -18,15 +18,16 @@ public class ThirdPersonController : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]
     private float movementForce = 1f;
-    private Vector3 forceDirection = Vector3.zero;
+    [HideInInspector]  public Vector3 forceDirection = Vector3.zero;
 
     [SerializeField]
     private Camera playerCamera;
 
     Interactable closestInteractable;
-    private bool isHiding;
+    public bool isHiding;
     private SphereCollider interactionSphere;
     [SerializeField] private HackingInteractableScript _hackingTerminalReference;
+    [HideInInspector] public GameObject currentPlayer;
 
     private void Awake()
     {

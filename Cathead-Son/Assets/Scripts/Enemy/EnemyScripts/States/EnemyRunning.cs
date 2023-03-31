@@ -7,6 +7,7 @@ public class EnemyRunning : EnemyBaseState
 {
     public GameObject enemyReference;
     public GameObject playerReference;
+    public CharacterSwap swapReference;
     private Rigidbody rb;
     private NavMeshAgent navMeshAgent;
     public FieldOfViewScript fovReference;
@@ -14,7 +15,8 @@ public class EnemyRunning : EnemyBaseState
     public override void EnterState(FieldOfViewScript enemy)
     {
         enemyReference = GameObject.FindGameObjectWithTag("Enemy");
-        playerReference = GameObject.FindGameObjectWithTag("Player");
+        swapReference = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<CharacterSwap>();
+        playerReference = swapReference.currentPlayer;
         navMeshAgent = enemyReference.GetComponent<NavMeshAgent>();
         fovReference = enemyReference.GetComponent<FieldOfViewScript>();
 
