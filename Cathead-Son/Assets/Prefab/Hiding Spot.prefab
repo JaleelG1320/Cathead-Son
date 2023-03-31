@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7603944684135800830}
   - component: {fileID: 7603944684135800831}
   - component: {fileID: 7603944684135800828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7603944685166653971}
   - component: {fileID: 7603944685166653968}
   - component: {fileID: 7603944685166653969}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hiding Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,6 +208,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e40aa03522e96e4ba9306100b450c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHidingHere: 0
-  hidingView: {fileID: 7603944684135800830}
-  lastPos: {x: 0, y: 0, z: 0}
+  IsHidingHere: 0
+  HidingCam: {fileID: 7603944684135800830}
