@@ -7,10 +7,13 @@ using UnityEngine.InputSystem;
 
 public class FieldOfViewScript : MonoBehaviour
 {
+    [Header("Enemy Properties")]
     public float radius;
     public float hearRadius;
     [Range(0, 360)] public float angle;
 
+
+    [Header("References")]
     public GameObject playerRef;
     public CharacterSwap swapReference;
     private PlayerController controllerRef;
@@ -20,12 +23,14 @@ public class FieldOfViewScript : MonoBehaviour
     public Sprite enemyStunnedImage;
     public SpriteRenderer canvasImage;
 
+    [Header("Layer Masks")]
     public LayerMask targetMask;
     public LayerMask obstructionMask;
 
+    [Header("States")]
     public bool canSeePlayer;
-    public bool canHearPlayer;
-    public bool isStunned;
+    //public bool canHearPlayer;
+    //public bool isStunned;
     public bool isIdle;
 
     [Header("State Machine")]
@@ -46,6 +51,7 @@ public class FieldOfViewScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isIdle = true;
         playerRef = GameObject.FindGameObjectWithTag("CurrentPlayer");
         controllerRef = playerRef.GetComponent<PlayerController>();
         enemyBaseState = enemyIdleReference;
@@ -61,27 +67,29 @@ public class FieldOfViewScript : MonoBehaviour
     void Update()
     {
         playerRef = swapReference.currentPlayer; 
-        Debug.Log("canHearPlayer is: " + canHearPlayer);
+        //Debug.Log("canHearPlayer is: " + canHearPlayer);
         Debug.Log("canSeePlayer is: " + canSeePlayer);
         Debug.Log("isIdle is: " + isIdle);
 
+        if (canSeePlayer)
+        {
+            //canHearPlayer = false;
+            isIdle = false;
+            SwitchState(enemyWalkingReference);
+            canvasImage.sprite = enemyWalkingImage;
+        }
 
-        if (canHearPlayer && !(playerRef.GetComponent<ThirdPersonController>().forceDirection.normalized == Vector3.zero))
+        /*
+        if (canHearPlayer)
         {
             isIdle = false;
             SwitchState(enemyWalkingReference);
             canvasImage.sprite = enemyWalkingImage;
             //animator.SetBool("isIdle", false);
             //animator.SetBool("isWalking", true);
-            if (canSeePlayer)
-            {
-                isIdle = false;
-                SwitchState(enemyRunningReference);
-                canvasImage.sprite = enemyRunningImage;
-                //animator.SetBool("isRunning", true);
-                //animator.SetBool("isWalking", false);
-            }
         }
+        */
+
         else
         {
             isIdle = true;
@@ -91,6 +99,29 @@ public class FieldOfViewScript : MonoBehaviour
             //animator.SetBool("isWalking", false);
             //animator.SetBool("isIdle", true);
         }
+
+
+
+        // if (canHearPlayer && !(playerRef.GetComponent<ThirdPersonController>().forceDirection.normalized == Vector3.zero))
+        // {
+        //     isIdle = false;
+        //     SwitchState(enemyWalkingReference);
+        //     canvasImage.sprite = enemyWalkingImage;
+        //     //animator.SetBool("isIdle", false);
+        //     //animator.SetBool("isWalking", true);
+        //     if (canSeePlayer)
+        //     {
+        //         isIdle = false;
+        //         SwitchState(enemyRunningReference);
+        //         canvasImage.sprite = enemyRunningImage;
+        //         //animator.SetBool("isRunning", true);
+        //         //animator.SetBool("isWalking", false);
+        //     }
+        // }
+        // else
+        // {
+            
+        // }
 
         canvasImage.transform.LookAt(playerRef.transform);
     }
@@ -104,7 +135,7 @@ public class FieldOfViewScript : MonoBehaviour
         {
             yield return wait;
             FieldOfViewCheck();
-            FieldOfAudioCheck(); 
+            //FieldOfAudioCheck(); 
         }
     }
 
@@ -142,7 +173,8 @@ public class FieldOfViewScript : MonoBehaviour
         }
     }
 
-    private void FieldOfAudioCheck()
+/*
+   private void FieldOfAudioCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, hearRadius, targetMask);
 
@@ -152,7 +184,7 @@ public class FieldOfViewScript : MonoBehaviour
 
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            if (!(swapReference.currentPlayer.GetComponent<Rigidbody>().velocity.normalized == Vector3.zero))
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
@@ -167,7 +199,7 @@ public class FieldOfViewScript : MonoBehaviour
             }
             else 
             {
-                canHearPlayer = true;
+                canHearPlayer = false;
             }
         }
         else if (canHearPlayer)
@@ -175,6 +207,7 @@ public class FieldOfViewScript : MonoBehaviour
             canHearPlayer = false;
         }
     }
+*/
 
     private void SwitchState(EnemyBaseState enemy)
     {
@@ -190,10 +223,7 @@ public class FieldOfViewScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Stun")
-        {
-            isStunned = true;
-        }
+
         if (collision.gameObject.tag == "CurrentPlayer")
         {
             Cursor.lockState = CursorLockMode.None;
