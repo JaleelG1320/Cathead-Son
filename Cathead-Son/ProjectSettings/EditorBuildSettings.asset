@@ -6,10 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Logan Test Scene.unity
-    guid: 4b99b9bbdeea0ab4b99d2659bcfd9aa8
-  - enabled: 1
-    path: Assets/Scenes/TestMiniGameScene.unity
-    guid: 3c76da960f5ef67479c3372aaab5837b
-  m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: d0df07263313c82458ce43e8a773f4c3, type: 2}
+    path: Assets/Scenes/ArtTest.unity
+    guid: 51ab885b945815344ac4c9608e553cf0
+  m_configObjects: {}

@@ -3,11 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - CurrentPlayer
-  - Enemy
-  - PlayerManager
-  - Hacking
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -17,8 +13,8 @@ TagManager:
   - UI
   - Interactable
   - 
-  - Player
-  - Walls
+  - 
+  - 
   - 
   - 
   - 

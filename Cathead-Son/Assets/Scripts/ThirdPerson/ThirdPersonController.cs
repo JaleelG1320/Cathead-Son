@@ -3,87 +3,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Linq;
+
 
 public class ThirdPersonController : MonoBehaviour
 {
     // Input Fields
-    private PlayerInput _playerInput;
-    private Vector2 _move;
-    private Vector2 _look;
+    private PlayerInput playerInput;
+    private Vector2 move;
 
-    public static CharacterSwap CharacterSwapController;
+    public static CharacterSwap swap;
 
     // Movement Fields
-    private Rigidbody _playerRB;
+    private Rigidbody rb;
     [SerializeField]
-    private float _movementForce = 1f;
-    [HideInInspector]  public Vector3 ForceDirection = Vector3.zero;
+    private float movementForce = 1f;
+    private Vector3 forceDirection = Vector3.zero;
 
     [SerializeField]
-    private Camera _playerCamera;
+    private Camera playerCamera;
 
-    public bool IsHiding;
-    [SerializeField] private HackingInteractableScript _hackingTerminalReference;
-    [HideInInspector] public GameObject CurrentPlayer;
+    Interactable closestInteractable;
+    private bool isHiding;
+    private SphereCollider interactionSphere;
 
-    public List<GameObject> gameObjects;
-    public bool hasHackingTerminal;
     private void Awake()
     {
-        _playerRB = this.GetComponent<Rigidbody>();
-        _playerInput = GetComponent<PlayerInput>();
+        rb = this.GetComponent<Rigidbody>();
+        playerInput = GetComponent<PlayerInput>();
+        interactionSphere = GetComponent<SphereCollider>();
 
-        if (CharacterSwapController == null)
-            CharacterSwapController = GetComponentInParent<CharacterSwap>();
+        if (swap == null)
+            swap = GetComponentInParent<CharacterSwap>();
     }
 
     private void OnEnable()
     {
-        _playerInput.enabled = true;
+        playerInput.enabled = true;
     }
 
     private void OnDisable()
     {
-        _playerInput.enabled = false;
+        playerInput.enabled = false;
     }
 
     private void FixedUpdate()
     {
-        if (_hackingTerminalReference == null)
-        {
-            // Control player movement.
-            ForceDirection += _move.x * GetCameraRight(_playerCamera) * _movementForce;
-            ForceDirection += _move.y * GetCameraForward(_playerCamera) * _movementForce;
-
-            _playerRB.AddForce(ForceDirection, ForceMode.Impulse);
-            ForceDirection = Vector3.zero;
-
-            LookAt(); // If there is a hacking terminal
-        }
-        else if(!_hackingTerminalReference.IsPlayingMinigame) // and the player is not hacking.
-        {
-            // Control player movement.
-            ForceDirection += _move.x * GetCameraRight(_playerCamera) * _movementForce;
-            ForceDirection += _move.y * GetCameraForward(_playerCamera) * _movementForce;
-
-            _playerRB.AddForce(ForceDirection, ForceMode.Impulse);
-            ForceDirection = Vector3.zero;
-
-            LookAt(); // If there is a hacking terminal
-        }
-
         
-    }
+        forceDirection += move.x * GetCameraRight(playerCamera) * movementForce;
+        forceDirection += move.y * GetCameraForward(playerCamera) * movementForce;
 
-    // Returns the Camera's Normalized Forward Vector.
+        rb.AddForce(forceDirection, ForceMode.Impulse);
+        forceDirection = Vector3.zero;
+
+        LookAt();
+    }
     private Vector3 GetCameraForward(Camera playerCamera)
     {
         Vector3 forward = playerCamera.transform.forward;
         forward.y = 0;
         return forward.normalized;
     }
-    // Returns the Camera's Normalized Right Vector.
+
     private Vector3 GetCameraRight(Camera playerCamera)
     {
         Vector3 right = playerCamera.transform.right;
@@ -103,7 +83,7 @@ public class ThirdPersonController : MonoBehaviour
     public void DoSwapCharPrev(InputAction.CallbackContext obj)
     {
         if (obj.started)
-            CharacterSwapController.SwapCharacterPrev();
+            swap.SwapCharacterPrev();
     }
 
     public void OnPause(InputAction.CallbackContext obj)
@@ -114,22 +94,75 @@ public class ThirdPersonController : MonoBehaviour
 
     public void DoMove(InputAction.CallbackContext obj)
     {
-        _move = obj.ReadValue<Vector2>();
-    }
-
-    public void DoLook(InputAction.CallbackContext obj)
-    {
-        _look = obj.ReadValue<Vector2>();
+        move = obj.ReadValue<Vector2>();
     }
 
     public void LookAt()
     {
-        Vector3 direction = _playerRB.velocity;
+        Vector3 direction = rb.velocity;
         direction.y = 0f;
 
-        if (_move.sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
-            this._playerRB.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        if (move.sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
+            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
         else
-            _playerRB.angularVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+    }
+    private void SetClosestInteractable()
+    {
+        Interactable closest = null;
+        float closestDistance = 0f;
+
+        foreach (Interactable item in Interactable.interactables)
+        {
+            float newDistance = Vector2.Distance(transform.position, item.transform.position);
+            newDistance = newDistance <= interactionSphere.radius ? newDistance : -1f;
+
+            if (newDistance == -1) continue;
+
+            if (closest == null || newDistance < closestDistance)
+            {
+                closest = item;
+                closestDistance = newDistance;
+            }
+        }
+
+        closestInteractable = closest;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Interactable>(out Interactable interactable))
+        {
+            ToggleOutLineOfClosestHidingSpot(false);
+            Interactable.interactables.Add(interactable);
+            SetClosestInteractable();
+            ToggleOutLineOfClosestHidingSpot(true);
+            Debug.Log(closestInteractable);
+            Debug.Log(Interactable.interactables.Count);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<Interactable>(out Interactable interactable)
+            && Interactable.interactables.Contains(interactable))
+        {
+            ToggleOutLineOfClosestHidingSpot(false);
+            Interactable.interactables.Remove(interactable);
+            SetClosestInteractable();
+            ToggleOutLineOfClosestHidingSpot(true);
+            Debug.Log(closestInteractable);
+            Debug.Log(Interactable.interactables.Count);
+
+        }
+    }
+
+    public void ToggleOutLineOfClosestHidingSpot(bool toggle = false)
+    {
+        HidingSpot hidingSpot = closestInteractable?.GetComponent<HidingSpot>();
+        if (hidingSpot is not null)
+        {
+            //hidingSpot.outline.enabled = toggle;
+        }
     }
 }

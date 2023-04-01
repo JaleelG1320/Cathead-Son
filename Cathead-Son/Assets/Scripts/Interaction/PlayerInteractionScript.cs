@@ -6,12 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerInteractionScript : MonoBehaviour
 {
     [Header("Interaction")]
-    [SerializeField] private Vector3 _interactionRayPoint = default;
-    [SerializeField] private float _interactionDistance = default;
-    [SerializeField] private LayerMask _interactionLayer = default;
-    [SerializeField] private Camera _playerCamera;
-    private InteractableObjects _currentInteractableObject;
-    private Collider[] _interactableObjectsInArea;
+    [SerializeField] private Vector3 interactionRayPoint = default;
+    [SerializeField] private float interactionDistance = default;
+    [SerializeField] private LayerMask interactionLayer = default;
+    [SerializeField] private Camera playerCamera;
+    private InteractableObjects currentInteractableObject;
+    [HideInInspector] public float publicInteractionDistance;
+    private Collider[] interactableObjectsInArea;
+
+    
+
     
     // Start is called before the first frame update
     void Start()
@@ -27,30 +31,29 @@ public class PlayerInteractionScript : MonoBehaviour
 
     private void HandleInteractionCheck()
     {
-        // Look for interactables within a given radius, store them.
-        _interactableObjectsInArea = Physics.OverlapSphere(gameObject.transform.position, _interactionDistance, _interactionLayer);
-
-        if (_interactableObjectsInArea.Length > 0)
+        Debug.Log("Calling the function");
+        interactableObjectsInArea = Physics.OverlapSphere(gameObject.transform.position, interactionDistance, interactionLayer);
+        if (interactableObjectsInArea.Length > 0)
         {
-            foreach (Collider collider in _interactableObjectsInArea)
+            foreach (Collider collider in interactableObjectsInArea)
             {
-                // Check if our object is interactble, and if it exists - is a new object that we've looked at.
-                if (collider.gameObject.layer == 6 && (_currentInteractableObject == null || collider.gameObject.GetInstanceID() != _currentInteractableObject.GetInstanceID()))
+                Debug.Log("Its in the array");
+                if (collider.gameObject.layer == 6 && (currentInteractableObject == null || collider.gameObject.GetInstanceID() != currentInteractableObject.GetInstanceID()))
                 {
-                    // Set as our new current interactable.
-                    collider.TryGetComponent(out _currentInteractableObject);
+                    collider.TryGetComponent(out currentInteractableObject);
 
-                    if (_currentInteractableObject)
+                    if (currentInteractableObject)
                     {
-                        _currentInteractableObject.OnFocus(); // Focus on it.
+                        Debug.Log("Can see the object");
+                        currentInteractableObject.OnFocus();
                     }
                 }
             }
         }
-        else if (_currentInteractableObject) // We didnt not find any interactables, lose focus on our current one.
+        else if (currentInteractableObject)
         {
-            _currentInteractableObject.OnLoseFocus();
-            _currentInteractableObject = null;
+            currentInteractableObject.OnLoseFocus();
+            currentInteractableObject = null;
         }
 
                 
@@ -58,11 +61,11 @@ public class PlayerInteractionScript : MonoBehaviour
 
     public void HandleInteractionInput(InputAction.CallbackContext obj)
     {
-        foreach (Collider collider in _interactableObjectsInArea)
+        foreach (Collider collider in interactableObjectsInArea)
         {
-            if (obj.started && _currentInteractableObject != null && Vector3.Distance(_currentInteractableObject.transform.position, gameObject.transform.position) < 5.7f)
+            if (obj.started && currentInteractableObject != null && Vector3.Distance(currentInteractableObject.transform.position, gameObject.transform.position) < 5.7f)
             {
-                _currentInteractableObject.OnInteract();
+                currentInteractableObject.OnInteract();
             }
         }
             

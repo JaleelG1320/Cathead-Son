@@ -6,50 +6,46 @@ using Cinemachine;
 
 public class CharacterSwap : MonoBehaviour
 {
-    public Transform Character;
-    public List<Transform> PossibleCharacters;
-    private int _whichCharacter;
-    public CinemachineFreeLook CVirCam;
-
-    [HideInInspector] public GameObject currentPlayer;
+    public Transform character;
+    public List<Transform> possibleCharacters;
+    public int whichCharacter;
+    public CinemachineFreeLook cVirCam;
 
     private void Start()
     {
-        CameraSwitcher.Register(CVirCam.gameObject.GetComponent<CinemachineVirtualCameraBase>());
-
-        if (Character == null && PossibleCharacters.Count == 1)
+        if(character == null && possibleCharacters.Count == 1)
         {
-            Character = PossibleCharacters[0];
-            Character.gameObject.tag = "CurrentPlayer";
-            currentPlayer = Character.gameObject;
+            character = possibleCharacters[0];
         }
         Swap();
     }
 
     public void SwapCharacterPrev()
     {
-        _whichCharacter = (_whichCharacter - 1 + PossibleCharacters.Count) % PossibleCharacters.Count; // Update our player index.
+        Debug.Log("test swap prev");
+        whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
         Swap();
     }
 
+    //public void SwapCharacterNext()
+    //{
+    //    Debug.Log("test swap next");
+    //    whichCharacter = (whichCharacter - 1 + possibleCharacters.Count) % possibleCharacters.Count;
+    //    Swap();
+    //}
+
     public void Swap()
     {
-
-        Character = PossibleCharacters[_whichCharacter];
-        Character.GetComponent<ThirdPersonController>().enabled = true;
-
-        HidingSpot.UpdatePlayer(Character);
-
-        CVirCam.Follow = Character;
-        CVirCam.LookAt = Character;
-        Character.gameObject.tag = "CurrentPlayer";
-        currentPlayer = Character.gameObject;
-
-        for (int  i = 0; i < PossibleCharacters.Count; i++)
+        character = possibleCharacters[whichCharacter];
+        character.GetComponent<ThirdPersonController>().enabled = true;
+        HidingSpot.UpdatePlayer(character);
+        cVirCam.Follow = character;
+        cVirCam.LookAt = character;
+        for (int  i = 0; i < possibleCharacters.Count; i++)
         {
-            if(PossibleCharacters[i] != Character)
+            if(possibleCharacters[i] != character)
             {
-                PossibleCharacters[i].GetComponent<ThirdPersonController>().enabled = false;
+                possibleCharacters[i].GetComponent<ThirdPersonController>().enabled = false;
             }
         }
 
