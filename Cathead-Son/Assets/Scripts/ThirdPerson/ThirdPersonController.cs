@@ -91,25 +91,10 @@ public class ThirdPersonController : MonoBehaviour
         return right.normalized;
     }
 
-    public void DoInteract(InputAction.CallbackContext obj)
-    {
-        // Interact with whatever that interactable is, but only if it exists / is not null.
-        closestInteractable?.Interact();
-
-        if (closestInteractable is not null)
-            isHiding = !isHiding;
-    }
-        
     public void DoSwapCharPrev(InputAction.CallbackContext obj)
     {
         if (obj.started)
             CharacterSwapController.SwapCharacterPrev();
-    }
-
-    public void OnPause(InputAction.CallbackContext obj)
-    {
-        if (obj.started)
-            Application.Quit();
     }
 
     public void DoMove(InputAction.CallbackContext obj)
