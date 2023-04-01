@@ -1,53 +1,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HidingSpot: Interactable
+public class HidingSpot: InteractableObjects
 {
-    public bool isHidingHere;
-    public static ThirdPersonController player;
-    public Camera hidingView;
-    public Vector3 lastPos;
-    public static List<HidingSpot> hidingSpots = new List<HidingSpot>();
-
-    //public Outline outline;
+    public bool IsHidingHere;
+    public static ThirdPersonController PlayerController;
+    public Camera HidingCam;
+    private Vector3 _lastPos;
+    public static List<HidingSpot> HidingSpots = new List<HidingSpot>();
 
     public void Start()
     {
-        hidingSpots.Add(this);
+        HidingSpots.Add(this);
     }
 
     public static void UpdatePlayer(Transform character)
     {
-        player = character.GetComponent<ThirdPersonController>();
+        PlayerController = character.GetComponent<ThirdPersonController>();
     }
 
-    public override void Interact() {
+    public override void OnInteract() {
 
-        isHidingHere = !isHidingHere;
+        IsHidingHere = !IsHidingHere;
 
-        if(isHidingHere)
+        if(IsHidingHere)
         {
             // Hide Player & Disable Releveant Functionality
-            player.GetComponent<CapsuleCollider>().enabled = false;
-            player.GetComponent<Rigidbody>().isKinematic = true;
-            hidingView.enabled = true;
+            PlayerController.GetComponent<CapsuleCollider>().enabled = false;
+            PlayerController.GetComponent<Rigidbody>().isKinematic = true;
+            HidingCam.enabled = true;
 
             //player.ToggleOutLineOfClosestHidingSpot(false);
             
             // Store Last Position & Move Player to Hiding Spot Position
-            lastPos = player.gameObject.transform.position;
-            Debug.Log(player.gameObject.transform.position);
-            player.gameObject.transform.position = transform.position;
+            _lastPos = PlayerController.gameObject.transform.position;
+            Debug.Log(PlayerController.gameObject.transform.position);
+            PlayerController.gameObject.transform.position = transform.position;
             //outline.enabled = false;
         }
-        else if (!isHidingHere) // Inverse
+        else if (!IsHidingHere) // Inverse
         {
-            player.gameObject.transform.position = lastPos;
-            Debug.Log(player.gameObject.transform.position);
+            PlayerController.gameObject.transform.position = _lastPos;
+            Debug.Log(PlayerController.gameObject.transform.position);
 
-            player.GetComponentInChildren<CapsuleCollider>().enabled = true;
-            player.GetComponent<Rigidbody>().isKinematic = false;
+            PlayerController.GetComponentInChildren<CapsuleCollider>().enabled = true;
+            PlayerController.GetComponent<Rigidbody>().isKinematic = false;
             //outline.enabled = true;
         }
+    }
+
+    public override void OnFocus()
+    {
+        Debug.Log("Focus On Hiding Spot");
+        //outline.enabled = true;
+    }
+
+    public override void OnLoseFocus()
+    {
+        Debug.Log("Focus Lost on Hiding Spot");
+        //outline.enabled = false;
     }
 }
