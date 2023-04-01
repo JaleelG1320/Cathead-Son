@@ -28,6 +28,7 @@ public class HidingSpot: InteractableObjects
             // Hide Player & Disable Releveant Functionality
             PlayerController.GetComponent<CapsuleCollider>().enabled = false;
             PlayerController.GetComponent<Rigidbody>().isKinematic = true;
+            PlayerController.GetComponent<ThirdPersonController>().IsHiding = true;
             HidingCam.enabled = true;
 
             //player.ToggleOutLineOfClosestHidingSpot(false);
@@ -42,7 +43,7 @@ public class HidingSpot: InteractableObjects
         {
             PlayerController.gameObject.transform.position = _lastPos;
             Debug.Log(PlayerController.gameObject.transform.position);
-
+            PlayerController.GetComponent<ThirdPersonController>().IsHiding = false;
             PlayerController.GetComponentInChildren<CapsuleCollider>().enabled = true;
             PlayerController.GetComponent<Rigidbody>().isKinematic = false;
             //outline.enabled = true;
