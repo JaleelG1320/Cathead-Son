@@ -15,7 +15,9 @@ public class CharacterSwap : MonoBehaviour
 
     private void Start()
     {
-        if(Character == null && PossibleCharacters.Count == 1)
+        CameraSwitcher.Register(CVirCam.gameObject.GetComponent<CinemachineVirtualCameraBase>());
+
+        if (Character == null && PossibleCharacters.Count == 1)
         {
             Character = PossibleCharacters[0];
             Character.gameObject.tag = "CurrentPlayer";
@@ -32,6 +34,7 @@ public class CharacterSwap : MonoBehaviour
 
     public void Swap()
     {
+
         Character = PossibleCharacters[_whichCharacter];
         Character.GetComponent<ThirdPersonController>().enabled = true;
 
@@ -39,7 +42,6 @@ public class CharacterSwap : MonoBehaviour
 
         CVirCam.Follow = Character;
         CVirCam.LookAt = Character;
-
         Character.gameObject.tag = "CurrentPlayer";
         currentPlayer = Character.gameObject;
 

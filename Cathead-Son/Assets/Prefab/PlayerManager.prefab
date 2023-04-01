@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827829553721090212}
-  m_LocalRotation: {x: -0.018078925, y: 0.071427256, z: -0.042184938, w: 0.9963893}
+  m_LocalRotation: {x: -0.018141448, y: -0.000000029802322, z: 0.000000014901161, w: 0.99983543}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -229,7 +229,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666289600647820474}
-  m_LocalRotation: {x: 0.018126845, y: 0.0698477, z: -0.044751674, w: 0.9963885}
+  m_LocalRotation: {x: 0.018189475, y: -0.000000029802322, z: 0.000000014901161, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -307,7 +307,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4602594447386841399}
-  m_LocalRotation: {x: 0.000000029802322, y: 0.07065019, z: -0.043473825, w: 0.99655336}
+  m_LocalRotation: {x: -0, y: 0.000000029802322, z: -0.000000007450581, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -408,12 +408,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ed5298af8bc0c4ca964062930de81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  possibleCharacters:
+  Character: {fileID: 0}
+  PossibleCharacters:
   - {fileID: 5660087631674639405}
   - {fileID: 3026082968678244926}
-  whichCharacter: 0
-  cVirCam: {fileID: 2121728648204149933}
+  CVirCam: {fileID: 2121728648204149933}
   currentPlayer: {fileID: 0}
 --- !u!1 &6524726799376522294
 GameObject:
@@ -741,8 +740,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9046179381852175127}
-  m_LocalRotation: {x: 0.24622396, y: -0.41107333, z: 0.11634368, w: 0.8699751}
-  m_LocalPosition: {x: 4.206555, y: 5.77, z: -5.643831}
+  m_LocalRotation: {x: 0.26062393, y: 0.2790444, z: -0.0789763, w: 0.92085403}
+  m_LocalPosition: {x: -3.0655007, y: 5.77, z: -6.1108575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1173,6 +1172,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DoSwapCharPrev
       objectReference: {fileID: 0}
+    - target: {fileID: 6627367619409579372, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
+      propertyPath: _playerCamera
+      value: 
+      objectReference: {fileID: 12962134027031983}
     - target: {fileID: 8136609911271940183, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
       propertyPath: playerCamera
       value: 
@@ -1193,6 +1196,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 51700123474544791, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
       propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 12962134027031983}
+    - target: {fileID: 51700123474544791, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+      propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 12962134027031983}
     - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
