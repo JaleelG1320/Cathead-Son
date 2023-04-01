@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PlayerManager
   - Hacking
+  - PlayerCharacter
   layers:
   - Default
   - TransparentFX
