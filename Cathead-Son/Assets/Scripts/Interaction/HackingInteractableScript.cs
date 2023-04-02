@@ -21,6 +21,8 @@ public class HackingInteractableScript : InteractableObjects
     private bool _currentlyMoving = false;
     private CinemachineFreeLook _freeLook;
     private CinemachineInputProvider _freeLookInput;
+    //public GameObject[] Terminal;
+    private int currentTerminal = 0; 
 
     public void Awake()
     {
@@ -33,7 +35,6 @@ public class HackingInteractableScript : InteractableObjects
         _playerReference = GameObject.FindGameObjectWithTag("CurrentPlayer");
         _playerScriptReference = _playerReference.GetComponent<ThirdPersonController>();
         _playerInputReference = _playerReference.GetComponent<PlayerInput>();
-
         SwitchToMinigame();
     }
 
@@ -52,6 +53,26 @@ public class HackingInteractableScript : InteractableObjects
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         CameraSwitcher.SwitchCamera(CameraSwitcher.cameras[CameraSwitcher.cameras.Count - 1]);
+        if(triggerObject != null)
+            Debug.Log("WOrks");
+        if(currentTerminal == 0){
+            triggerObject = GameObject.Find("Door2");
+            currentTerminal++;
+        }
+        else if(currentTerminal == 1){
+            triggerObject = GameObject.Find("Door3");
+            currentTerminal++;
+        }
+        else if (currentTerminal == 2){
+            Destroy(gameObject);
+        }
+        gameObject.transform.Translate(-6,0,0);
+
+        /*if(currentTerminal < 2){
+            Terminal[currentTerminal].SetActive(false);
+            currentTerminal++;
+            Terminal[currentTerminal].SetActive(true);
+        }*/
     }
 
     private void StartMinigame()

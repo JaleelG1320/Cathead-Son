@@ -6,7 +6,7 @@ public class LightDetector : MonoBehaviour
 {
 private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PlayerCharacter"))
+        if (other.gameObject.CompareTag("CurrentPlayer"))
         {
             Debug.Log("LOSE");
         }

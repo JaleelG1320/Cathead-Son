@@ -50,6 +50,7 @@ public class CharacterSwap : MonoBehaviour
             if(PossibleCharacters[i] != Character)
             {
                 PossibleCharacters[i].GetComponent<ThirdPersonController>().enabled = false;
+                PossibleCharacters[i].gameObject.tag = "IdlePlayer";
             }
         }
 

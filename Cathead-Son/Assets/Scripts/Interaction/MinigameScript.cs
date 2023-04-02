@@ -9,7 +9,7 @@ public class MinigameScript : MonoBehaviour
     public int[] _pickedButtons;
     public Button[] Buttons;
 
-    private int _currentNumInSequence = 0;
+    public int _currentNumInSequence = 0;
     public void Awake()
     {
         Buttons[0] = GameObject.Find("YellowButton").GetComponent<Button>();

@@ -8,7 +8,7 @@ TagManager:
   - Enemy
   - PlayerManager
   - Hacking
-  - PlayerCharacter
+  - IdlePlayer
   layers:
   - Default
   - TransparentFX
