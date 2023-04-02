@@ -23,6 +23,10 @@ public class HackingInteractableScript : InteractableObjects
     private CinemachineFreeLook _freeLook;
     private CinemachineInputProvider _freeLookInput;
     private int currentTerminal = 0; 
+    public ParticleSystem finishEffect;
+    public GameObject sparkle1;
+    public GameObject sparkle2;
+    public GameObject sparkle3;
 
     public void Awake()
     {
@@ -59,14 +63,19 @@ public class HackingInteractableScript : InteractableObjects
         if(triggerObject != null)
             Debug.Log("WOrks");
         if(currentTerminal == 0){
+            sparkle1.SetActive(false);
+            sparkle2.SetActive(true);
             triggerObject = GameObject.Find("Door2");
-            currentTerminal++;
+            currentTerminal++;  
         }
         else if(currentTerminal == 1){
+            sparkle2.SetActive(false);
+            sparkle3.SetActive(true);
             triggerObject = GameObject.Find("Door3");
             currentTerminal++;
         }
         else if (currentTerminal == 2){
+            sparkle3.SetActive(false);
             Destroy(gameObject);
         }
         gameObject.transform.Translate(-6,0,0);
