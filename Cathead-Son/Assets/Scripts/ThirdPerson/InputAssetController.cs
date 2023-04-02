@@ -106,5 +106,46 @@ public class InputAssetController : ScriptableObject, ThirdPersonActionsAsset.IP
 			SetPlayer();
 		}
 	}
+
+	public void OnNavigate(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnSubmit(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnCancel(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnPoint(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnClick(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnScrollWheel(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnMiddleClick(InputAction.CallbackContext input)
+	{
+
+	}
+
+		public void OnRightClick(InputAction.CallbackContext input)
+	{
+
+	}
+
 }
 
