@@ -9,6 +9,7 @@ public class HackingInteractableScript : InteractableObjects
 {
     private RenderTexture _minigameRenderer;
     private GameObject _playerReference;
+    private MeshRenderer _playerMeshReference;
     private ThirdPersonController _playerScriptReference;
     private PlayerInput _playerInputReference;
     private Scene _minigameScene;
@@ -21,7 +22,6 @@ public class HackingInteractableScript : InteractableObjects
     private bool _currentlyMoving = false;
     private CinemachineFreeLook _freeLook;
     private CinemachineInputProvider _freeLookInput;
-    //public GameObject[] Terminal;
     private int currentTerminal = 0; 
 
     public void Awake()
@@ -33,6 +33,7 @@ public class HackingInteractableScript : InteractableObjects
     {
         Debug.Log("Interacted with " + gameObject.name);
         _playerReference = GameObject.FindGameObjectWithTag("CurrentPlayer");
+        _playerMeshReference = _playerReference.GetComponent<MeshRenderer>();
         _playerScriptReference = _playerReference.GetComponent<ThirdPersonController>();
         _playerInputReference = _playerReference.GetComponent<PlayerInput>();
         SwitchToMinigame();
@@ -41,6 +42,7 @@ public class HackingInteractableScript : InteractableObjects
     private void SwitchToMinigame()
     {
         _playerScriptReference.enabled = false;
+        _playerMeshReference.enabled = false;
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         CameraSwitcher.SwitchCamera(_minigameCamera);
@@ -50,6 +52,7 @@ public class HackingInteractableScript : InteractableObjects
     public void SwitchToPlayer()
     {
         _playerScriptReference.enabled = true;
+        _playerMeshReference.enabled = true;
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         CameraSwitcher.SwitchCamera(CameraSwitcher.cameras[CameraSwitcher.cameras.Count - 1]);
