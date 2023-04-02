@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Lorenzo Test Level 1.unity
     guid: 4ef0dec6470ec3244a4e9339f8d37521
   - enabled: 1
-    path: Assets/Scenes/WinLoss Scene.unity
-    guid: 26af411461e5f81488f1d942e324eab1
+    path: Assets/Scenes/WinLoseScreen.unity
+    guid: 354a5c1cd77a6bc4e9491f3ebf053a66
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d0df07263313c82458ce43e8a773f4c3, type: 2}
     enabled: {fileID: 0}
