@@ -10,6 +10,10 @@ public class CharacterSwap : MonoBehaviour
     public List<Transform> PossibleCharacters;
     private int _whichCharacter;
     public CinemachineFreeLook CVirCam;
+    private GameObject chON;
+    private GameObject chOFF;
+    private GameObject tON;
+    private GameObject tOFF;
 
     [HideInInspector] public GameObject currentPlayer;
 
@@ -23,6 +27,12 @@ public class CharacterSwap : MonoBehaviour
             Character.gameObject.tag = "CurrentPlayer";
             currentPlayer = Character.gameObject;
         }
+        chON = GameObject.Find("CatheadOn");
+        chOFF = GameObject.Find("CatheadOff");
+        tON = GameObject.Find("TommyOn");
+        tOFF = GameObject.Find("TommyOff");
+        chOFF.SetActive(false);
+        tON.SetActive(false);
         Swap();
     }
 
@@ -51,6 +61,20 @@ public class CharacterSwap : MonoBehaviour
             {
                 PossibleCharacters[i].GetComponent<ThirdPersonController>().enabled = false;
                 PossibleCharacters[i].gameObject.tag = "IdlePlayer";
+                if(PossibleCharacters[i].gameObject.name == "Cat Head")
+                {
+                    chOFF.SetActive(true);
+                    tON.SetActive(true);
+                    chON.SetActive(false);
+                    tOFF.SetActive(false);
+                }
+                if(PossibleCharacters[i].gameObject.name == "Son")
+                {
+                    chOFF.SetActive(false);
+                    tON.SetActive(false);
+                    chON.SetActive(true);
+                    tOFF.SetActive(true);
+                }
             }
         }
 

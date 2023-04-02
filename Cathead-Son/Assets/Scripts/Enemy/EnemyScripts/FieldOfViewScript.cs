@@ -16,7 +16,8 @@ public class FieldOfViewScript : MonoBehaviour
     [Header("References")]
     public GameObject playerRef;
     public CharacterSwap swapReference;
-    private PlayerController controllerRef;
+    private ThirdPersonController controllerRef;
+    public HidingSpot _hidingSpotReference;
     public Sprite enemyIdleImage;
     public Sprite enemyWalkingImage;
     public Sprite enemyRunningImage;
@@ -53,7 +54,7 @@ public class FieldOfViewScript : MonoBehaviour
     {
         isIdle = true;
         playerRef = GameObject.FindGameObjectWithTag("CurrentPlayer");
-        controllerRef = playerRef.GetComponent<PlayerController>();
+        controllerRef = playerRef.GetComponent<ThirdPersonController>();
         enemyBaseState = enemyIdleReference;
         canvasImage.sprite = enemyIdleImage;
         enemyBaseState.EnterState(this);
@@ -71,7 +72,7 @@ public class FieldOfViewScript : MonoBehaviour
         Debug.Log("canSeePlayer is: " + canSeePlayer);
         Debug.Log("isIdle is: " + isIdle);
 
-        if (canSeePlayer)
+        if (canSeePlayer && !(controllerRef.IsHiding))
         {
             //canHearPlayer = false;
             isIdle = false;
@@ -228,7 +229,7 @@ public class FieldOfViewScript : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene("LoseScene");
+            WinLossManager.gameEnd = true;
         }
     }
 }

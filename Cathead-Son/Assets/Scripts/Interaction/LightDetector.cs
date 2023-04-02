@@ -8,7 +8,9 @@ private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("CurrentPlayer"))
         {
-            Debug.Log("LOSE");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            WinLossManager.gameEnd = true;
         }
     }
 }
