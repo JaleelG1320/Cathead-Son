@@ -27,6 +27,7 @@ public class HackingInteractableScript : InteractableObjects
     public GameObject sparkle1;
     public GameObject sparkle2;
     public GameObject sparkle3;
+    private GameObject enemyReference;
 
     public void Awake()
     {
@@ -66,7 +67,9 @@ public class HackingInteractableScript : InteractableObjects
             sparkle1.SetActive(false);
             sparkle2.SetActive(true);
             triggerObject = GameObject.Find("Door2");
-            currentTerminal++;  
+            currentTerminal++;
+            enemyReference = GameObject.Find("Enemy1");
+            enemyReference.SetActive(false);
         }
         else if(currentTerminal == 1){
             sparkle2.SetActive(false);
@@ -80,11 +83,6 @@ public class HackingInteractableScript : InteractableObjects
         }
         gameObject.transform.Translate(-6,0,0);
 
-        /*if(currentTerminal < 2){
-            Terminal[currentTerminal].SetActive(false);
-            currentTerminal++;
-            Terminal[currentTerminal].SetActive(true);
-        }*/
     }
 
     private void StartMinigame()
