@@ -229,7 +229,7 @@ public class FieldOfViewScript : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene("LoseScene");
+            WinLossManager.gameEnd = true;
         }
     }
 }
