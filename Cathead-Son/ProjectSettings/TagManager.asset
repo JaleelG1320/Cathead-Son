@@ -9,6 +9,7 @@ TagManager:
   - PlayerManager
   - Hacking
   - IdlePlayer
+  - StartingButton
   layers:
   - Default
   - TransparentFX
