@@ -14,7 +14,7 @@ public class LightSwitchInteract : InteractableObjects
     public override void OnInteract()
     {
         Debug.Log("Interacted with " + gameObject.name);
-        anim.SetBool("Change", true);
+        anim.Play("Flip", -1, 0f);
         Destroy(light);
     }
     public override void OnFocus()
