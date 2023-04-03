@@ -423,6 +423,17 @@
                 },
                 {
                     "name": "",
+                    "id": "0bf416c7-e681-4fc7-9e3f-1a2597bde18c",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cec6b3ee-46b3-4766-8a7b-bf0c4a79d4b3",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
