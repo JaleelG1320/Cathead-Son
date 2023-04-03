@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Threading;
 
 public class PlayerInteractionScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerInteractionScript : MonoBehaviour
     [SerializeField] private Camera _playerCamera;
     private InteractableObjects _currentInteractableObject;
     private Collider[] _interactableObjectsInArea;
+    public Animator anim;
+    private IEnumerator coroutine;
     
     // Start is called before the first frame update
     void Start()
@@ -62,9 +65,14 @@ public class PlayerInteractionScript : MonoBehaviour
         {
             if (obj.started && _currentInteractableObject != null && Vector3.Distance(_currentInteractableObject.transform.position, gameObject.transform.position) < 5.7f)
             {
-                _currentInteractableObject.OnInteract();
+                anim.Play("Interact", -1, 0f);
+                Invoke(nameof(Delay), 1.5f);
             }
         }
             
+    }
+    void Delay()
+    {
+        _currentInteractableObject.OnInteract();
     }
 }

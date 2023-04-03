@@ -9,7 +9,7 @@ public class HackingInteractableScript : InteractableObjects
 {
     private RenderTexture _minigameRenderer;
     private GameObject _playerReference;
-    private MeshRenderer _playerMeshReference;
+    //private MeshRenderer _playerMeshReference;
     private ThirdPersonController _playerScriptReference;
     private PlayerInput _playerInputReference;
     private Scene _minigameScene;
@@ -28,6 +28,7 @@ public class HackingInteractableScript : InteractableObjects
     public GameObject sparkle2;
     public GameObject sparkle3;
     private GameObject enemyReference;
+    private Animator anim;
 
     public void Awake()
     {
@@ -37,8 +38,10 @@ public class HackingInteractableScript : InteractableObjects
     public override void OnInteract()
     {
         Debug.Log("Interacted with " + gameObject.name);
+        _playerReference = GameObject.Find("tommy");
+        anim = _playerReference.GetComponent<Animator>();
         _playerReference = GameObject.FindGameObjectWithTag("CurrentPlayer");
-        _playerMeshReference = _playerReference.GetComponent<MeshRenderer>();
+        //_playerMeshReference = _playerReference.GetComponent<MeshRenderer>();
         _playerScriptReference = _playerReference.GetComponent<ThirdPersonController>();
         _playerInputReference = _playerReference.GetComponent<PlayerInput>();
         SwitchToMinigame();
@@ -47,7 +50,7 @@ public class HackingInteractableScript : InteractableObjects
     private void SwitchToMinigame()
     {
         _playerScriptReference.enabled = false;
-        _playerMeshReference.enabled = false;
+        //_playerMeshReference.enabled = false;
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         CameraSwitcher.SwitchCamera(_minigameCamera);
@@ -57,7 +60,8 @@ public class HackingInteractableScript : InteractableObjects
     public void SwitchToPlayer()
     {
         _playerScriptReference.enabled = true;
-        _playerMeshReference.enabled = true;
+        anim.Play("Idle", -1, 0f);
+        //_playerMeshReference.enabled = true;
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         CameraSwitcher.SwitchCamera(CameraSwitcher.cameras[CameraSwitcher.cameras.Count - 1]);

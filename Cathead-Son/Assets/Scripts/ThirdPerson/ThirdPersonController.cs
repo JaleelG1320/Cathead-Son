@@ -11,6 +11,7 @@ public class ThirdPersonController : MonoBehaviour
     private PlayerInput _playerInput;
     private Vector2 _move;
     private Vector2 _look;
+    public Animator anim;
 
     public static CharacterSwap CharacterSwapController;
 
@@ -100,6 +101,13 @@ public class ThirdPersonController : MonoBehaviour
     public void DoMove(InputAction.CallbackContext obj)
     {
         _move = obj.ReadValue<Vector2>();
+        if(_move != Vector2.zero){
+            anim.SetInteger("Walk", 1);
+        }
+        else {
+            anim.SetInteger("Walk", 0);
+            Debug.Log("Stopping Workjs");
+        }
     }
 
     public void DoLook(InputAction.CallbackContext obj)

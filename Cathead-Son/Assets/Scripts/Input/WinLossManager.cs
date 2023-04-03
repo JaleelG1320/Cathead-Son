@@ -16,9 +16,9 @@ public class WinLossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("TESTTeeeerrrrrr");
         if(gameEnd == true){
             SceneManager.LoadScene(2);
+            gameEnd = false;
         }
     }
 }
