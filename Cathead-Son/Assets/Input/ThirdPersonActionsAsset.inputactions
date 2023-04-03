@@ -235,6 +235,17 @@
                 },
                 {
                     "name": "",
+                    "id": "6ab2b2ff-b238-48fd-849b-679f1d3da293",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6883fb11-695d-4215-8287-1c36ab894f37",
                     "path": "<Keyboard>/space",
                     "interactions": "",
