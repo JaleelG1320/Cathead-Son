@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
@@ -17,6 +17,7 @@ public class FieldOfViewScript : MonoBehaviour
     public GameObject playerRef;
     public CharacterSwap swapReference;
     private ThirdPersonController controllerRef;
+    private NavMeshAgent navMeshAgent;
     public HidingSpot _hidingSpotReference;
     public Sprite enemyIdleImage;
     public Sprite enemyWalkingImage;
@@ -37,9 +38,8 @@ public class FieldOfViewScript : MonoBehaviour
     [Header("State Machine")]
     EnemyBaseState enemyBaseState;
     EnemyBaseState currentState;
-    EnemyWalking enemyWalkingReference = new EnemyWalking();
-    EnemyRunning enemyRunningReference = new EnemyRunning();
-    EnemyIdle enemyIdleReference = new EnemyIdle();
+    EnemyWalking enemyWalkingReference;
+    EnemyIdle enemyIdleReference;
     public Transform[] idlePositions;
     public bool currentlySwitching;
     private Animator animator;
@@ -55,11 +55,15 @@ public class FieldOfViewScript : MonoBehaviour
         isIdle = true;
         playerRef = GameObject.FindGameObjectWithTag("CurrentPlayer");
         controllerRef = playerRef.GetComponent<ThirdPersonController>();
+        navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        enemyIdleReference = new EnemyIdle(idlePositions, swapReference, this, navMeshAgent);
+        enemyWalkingReference = new EnemyWalking(swapReference, this, navMeshAgent);
         enemyBaseState = enemyIdleReference;
         canvasImage.sprite = enemyIdleImage;
         enemyBaseState.EnterState(this);
         StartCoroutine(FOVRoutine());
         currentlySwitching = false;
+        
         //animator = gameObject.GetComponentInChildren<Animator>();
         //animator.SetBool("isIdle", true);
     }
@@ -94,7 +98,7 @@ public class FieldOfViewScript : MonoBehaviour
         else
         {
             isIdle = true;
-            SwitchState(enemyIdleReference);
+            SwitchState(enemyIdleReference);  
             canvasImage.sprite = enemyIdleImage;
             //animator.SetBool("isRunning", false);
             //animator.SetBool("isWalking", false);

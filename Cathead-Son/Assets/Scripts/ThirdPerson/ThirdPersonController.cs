@@ -9,6 +9,8 @@ public class ThirdPersonController : MonoBehaviour
 {
     // Input Fields
     private PlayerInput _playerInput;
+    [SerializeField] private InputActionReference movementControl;
+    [SerializeField] private InputActionReference lookControl;
     private Vector2 _move;
     private Vector2 _look;
     public Animator anim;
@@ -30,6 +32,8 @@ public class ThirdPersonController : MonoBehaviour
 
     public List<GameObject> gameObjects;
     public bool hasHackingTerminal;
+    private float rotationSpeed = 3f;
+
     private void Awake()
     {
         _playerRB = this.GetComponent<Rigidbody>();
@@ -72,6 +76,7 @@ public class ThirdPersonController : MonoBehaviour
             ForceDirection = Vector3.zero;
 
             LookAt(); // If there is a hacking terminal
+            CameraRotation(); //rotates camera
         }
 
         
@@ -124,5 +129,23 @@ public class ThirdPersonController : MonoBehaviour
             this._playerRB.rotation = Quaternion.LookRotation(direction, Vector3.up);
         else
             _playerRB.angularVelocity = Vector3.zero;
+    }
+
+    private void MovementControl()
+    {
+        Vector2 movement = movementControl.action.ReadValue<Vector2>();
+        Vector3 move = new Vector3(movement.x, 0, movement.y);
+        move = _playerCamera.transform.forward * move.z + _playerCamera.transform.right * move.x;
+        move.y = 0f;
+    }
+
+    private void CameraRotation()
+    {
+        if (_move != Vector2.zero)
+        {
+            float targetAngle = Mathf.Atan2(_move.x, _move.y) * Mathf.Rad2Deg + _playerCamera.transform.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+        }
     }
 }

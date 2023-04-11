@@ -14,24 +14,37 @@ public class EnemyIdle : EnemyBaseState
     public Transform[] points;
     public FieldOfViewScript fovReference;
 
+    public EnemyIdle(Transform[] _points, CharacterSwap _swapReference, FieldOfViewScript _fovReference, NavMeshAgent _navMeshAgent)
+    {
+        this.points = _points;
+        this.swapReference = _swapReference;
+        this.fovReference = _fovReference;
+        //this.enemyReference = GameObject.FindGameObjectWithTag("Enemy");
+        //playerReference = this.swapReference.currentPlayer;
+        this.navMeshAgent = _navMeshAgent;
+    }
+
 
     public override void EnterState(FieldOfViewScript enemy)
     {
+        /*
         enemyReference = GameObject.FindGameObjectWithTag("Enemy");
         swapReference = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<CharacterSwap>();
         playerReference = swapReference.currentPlayer;
         navMeshAgent = enemyReference.GetComponent<NavMeshAgent>();
         fovReference = enemyReference.GetComponent<FieldOfViewScript>();
         points = fovReference.idlePositions;
-        UpdateState(fovReference);
-        navMeshAgent.isStopped = false;
-        fovReference.currentlySwitching = false;
+        */
+        this.playerReference = this.swapReference.currentPlayer;
+        UpdateState(this.fovReference);
+        this.navMeshAgent.isStopped = false;
+        this.fovReference.currentlySwitching = false;
     }
     public override void UpdateState(FieldOfViewScript enemy)
     {
         // Choose the next destination point when the agent gets
         // close to the current one.
-        if ((!navMeshAgent.pathPending) && (navMeshAgent.remainingDistance < 0.5f))
+        if ((!this.navMeshAgent.pathPending) && (this.navMeshAgent.remainingDistance < 0.5f))
         {
             GoToNextPoint();
         }  
@@ -39,8 +52,8 @@ public class EnemyIdle : EnemyBaseState
     }
     public override void ExitState(FieldOfViewScript enemy)
     {
-        navMeshAgent.isStopped = true;
-        navMeshAgent.speed = 2.5f;
+        this.navMeshAgent.isStopped = true;
+        this.navMeshAgent.speed = 2.5f;
     }
     public override void HandleSight(FieldOfViewScript enemy)
     {
@@ -54,13 +67,13 @@ public class EnemyIdle : EnemyBaseState
     void GoToNextPoint() 
     {
         // Returns if no points have been set up
-        if (points.Length == 0)
+        if (this.points.Length == 0)
         {
             return;
         }
         // Set the agent to go to the currently selected destination.
-        navMeshAgent.destination = points[destinationPoint].position;
-        navMeshAgent.SetDestination(navMeshAgent.destination);
+        this.navMeshAgent.destination = points[destinationPoint].position;
+        this.navMeshAgent.SetDestination(navMeshAgent.destination);
 
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
