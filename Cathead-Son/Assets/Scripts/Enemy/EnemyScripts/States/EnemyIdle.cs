@@ -14,6 +14,8 @@ public class EnemyIdle : EnemyBaseState
     public Transform[] points;
     public FieldOfViewScript fovReference;
 
+    
+
     public EnemyIdle(Transform[] _points, CharacterSwap _swapReference, FieldOfViewScript _fovReference, NavMeshAgent _navMeshAgent)
     {
         this.points = _points;
