@@ -27,12 +27,12 @@ public class CharacterSwap : MonoBehaviour
             Character.gameObject.tag = "CurrentPlayer";
             currentPlayer = Character.gameObject;
         }
-        //chON = GameObject.Find("CatheadOn");
-        //chOFF = GameObject.Find("CatheadOff");
-        //tON = GameObject.Find("TommyOn");
-        //tOFF = GameObject.Find("TommyOff");
-        //chOFF.SetActive(false);
-        //tON.SetActive(false);
+        chON = GameObject.Find("CatheadOn");
+        chOFF = GameObject.Find("CatheadOff");
+        tON = GameObject.Find("TommyOn");
+        tOFF = GameObject.Find("TommyOff");
+        chOFF.SetActive(false);
+        tON.SetActive(false);
         Swap();
     }
 

@@ -9,8 +9,6 @@ public class ThirdPersonController : MonoBehaviour
 {
     // Input Fields
     private PlayerInput _playerInput;
-    [SerializeField] private InputActionReference movementControl;
-    [SerializeField] private InputActionReference lookControl;
     private Vector2 _move;
     private Vector2 _look;
     public Animator anim;
@@ -129,14 +127,6 @@ public class ThirdPersonController : MonoBehaviour
             this._playerRB.rotation = Quaternion.LookRotation(direction, Vector3.up);
         else
             _playerRB.angularVelocity = Vector3.zero;
-    }
-
-    private void MovementControl()
-    {
-        Vector2 movement = movementControl.action.ReadValue<Vector2>();
-        Vector3 move = new Vector3(movement.x, 0, movement.y);
-        move = _playerCamera.transform.forward * move.z + _playerCamera.transform.right * move.x;
-        move.y = 0f;
     }
 
     private void CameraRotation()
