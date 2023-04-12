@@ -40,14 +40,16 @@ public class FieldOfViewScript : MonoBehaviour
     EnemyBaseState currentState;
     EnemyWalking enemyWalkingReference;
     EnemyIdle enemyIdleReference;
+    EnemyIdle enemyIdleReference2;
     public Transform[] idlePositions;
+    public Transform[] idlePositions2;
     public bool currentlySwitching;
     private Animator animator;
     [SerializeField] private AnimationClip enemyIdle;
     [SerializeField] private AnimationClip enemyWalking;
     [SerializeField] private AnimationClip enemyRunning;
 
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,7 @@ public class FieldOfViewScript : MonoBehaviour
         controllerRef = playerRef.GetComponent<ThirdPersonController>();
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         enemyIdleReference = new EnemyIdle(idlePositions, swapReference, this, navMeshAgent);
+        enemyIdleReference2 = new EnemyIdle(idlePositions2, swapReference, this, navMeshAgent);
         enemyWalkingReference = new EnemyWalking(swapReference, this, navMeshAgent);
         enemyBaseState = enemyIdleReference;
         canvasImage.sprite = enemyIdleImage;
@@ -66,6 +69,7 @@ public class FieldOfViewScript : MonoBehaviour
         
         //animator = gameObject.GetComponentInChildren<Animator>();
         //animator.SetBool("isIdle", true);
+
     }
 
     // Update is called once per frame
