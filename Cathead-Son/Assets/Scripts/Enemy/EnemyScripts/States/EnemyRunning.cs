@@ -20,7 +20,7 @@ public class EnemyRunning : EnemyBaseState
         navMeshAgent = enemyReference.GetComponent<NavMeshAgent>();
         fovReference = enemyReference.GetComponent<FieldOfViewScript>();
 
-        navMeshAgent.speed = 5f;
+        navMeshAgent.speed = enemy.chaseSpeed;
         UpdateState(fovReference);
         navMeshAgent.isStopped = false;
     }

@@ -21,5 +21,4 @@ public class Door : MonoBehaviour , ITriggerable
             transform.position = Vector3.MoveTowards(transform.position, EndTF.position, LiftSpeed * Time.deltaTime);
         }
     }
-
 }

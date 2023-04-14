@@ -55,7 +55,7 @@ public class EnemyIdle : EnemyBaseState
     public override void ExitState(FieldOfViewScript enemy)
     {
         this.navMeshAgent.isStopped = true;
-        this.navMeshAgent.speed = 2.5f;
+        //this.navMeshAgent.speed = 2.5f;
     }
     public override void HandleSight(FieldOfViewScript enemy)
     {
