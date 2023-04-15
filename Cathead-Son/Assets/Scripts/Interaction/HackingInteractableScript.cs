@@ -50,18 +50,19 @@ public class HackingInteractableScript : InteractableObjects
     private void SwitchToMinigame()
     {
         _playerScriptReference.enabled = false;
-        //_playerMeshReference.enabled = false;
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         CameraSwitcher.SwitchCamera(_minigameCamera);
         Invoke(nameof(StartMinigame), TimeToMoveCamera + 1f);
+        _playerScriptReference.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+
     }
 
     public void SwitchToPlayer()
     {
         _playerScriptReference.enabled = true;
         anim.Play("Idle", -1, 0f);
-        //_playerMeshReference.enabled = true;
+        _playerScriptReference.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         CameraSwitcher.SwitchCamera(CameraSwitcher.cameras[CameraSwitcher.cameras.Count - 1]);
