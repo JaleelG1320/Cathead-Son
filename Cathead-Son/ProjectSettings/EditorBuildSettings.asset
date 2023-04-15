@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UI.unity
     guid: 01ce5f7c38f1c454a9bc0ba4bcba3ae9
   - enabled: 1
-    path: Assets/Scenes/Levels/Lorenzo Test Level 1.unity
+    path: Assets/Scenes/Levels/MusuemLevel.unity
     guid: 4ef0dec6470ec3244a4e9339f8d37521
   - enabled: 1
     path: Assets/Scenes/WinLoseScreen.unity

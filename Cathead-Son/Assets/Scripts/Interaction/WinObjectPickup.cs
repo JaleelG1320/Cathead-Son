@@ -11,10 +11,14 @@ public class WinObjectPickup : MonoBehaviour
     {
         if (collision.gameObject.tag == "CurrentPlayer")
         {
+            /*
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             WinLossManager.win = true;
             WinLossManager.gameEnd = true;
+            */
+
+            GameManager.instance.OnLevelComplete();
         }
     }
 }

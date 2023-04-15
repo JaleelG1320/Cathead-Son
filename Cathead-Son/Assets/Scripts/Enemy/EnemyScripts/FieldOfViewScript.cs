@@ -235,9 +235,13 @@ public class FieldOfViewScript : MonoBehaviour
 
         if (collision.gameObject.tag == "CurrentPlayer")
         {
+            /*
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             WinLossManager.gameEnd = true;
+            */
+
+            GameManager.instance.OnLevelFailed();
         }
     }
 }

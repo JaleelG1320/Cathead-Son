@@ -70,15 +70,15 @@ public class GameManager :  MonoBehaviour
         // set current level to be completed
         currentLevel.isCompleted = true;
         // take player back to hub level
-        SwitchLevel(currentLevel, hubLevel);
+        SwitchLevel(this.currentLevel, this.hubLevel);
     }
 
     public void OnLevelFailed()
     {
         // set current level to be incomplete
-        currentLevel.isCompleted = false;
+        this.currentLevel.isCompleted = false;
         // take player back to hub level
-        SwitchLevel(currentLevel, hubLevel);
+        SwitchLevel(this.currentLevel, this.hubLevel);
     }
 
     public void SwitchLevel(Level _currentLevel, Level _targetLevel)
