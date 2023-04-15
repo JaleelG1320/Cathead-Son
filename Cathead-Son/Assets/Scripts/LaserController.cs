@@ -62,6 +62,6 @@ public class LaserController : MonoBehaviour, ITriggerable
     {
         if ((TargetLayer.value & (1 << other.gameObject.layer)) > 0)
             if (!HidingSpot.PlayerController.IsHiding)
-                WinLossManager.gameEnd = true;
+                GameManager.instance.OnLevelFailed();
     }
 }

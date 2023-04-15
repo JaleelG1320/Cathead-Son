@@ -48,9 +48,7 @@ public class CarMover : MonoBehaviour
     {
         if (other.gameObject.CompareTag("CurrentPlayer"))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            WinLossManager.gameEnd = true;
+            GameManager.instance.OnLevelFailed();
         }
     }
 }

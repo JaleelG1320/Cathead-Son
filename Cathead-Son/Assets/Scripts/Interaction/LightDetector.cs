@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
-public class LightDetector : MonoBehaviour
+public class LightDetector : MonoBehaviour , ITriggerable
 {
-private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("CurrentPlayer"))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            WinLossManager.gameEnd = true;
+            GameManager.instance.OnLevelFailed();
         }
     }
+    public void OnTrigger()
+    {
+        Destroy(gameObject);
+    }
 }
+

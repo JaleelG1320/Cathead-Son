@@ -74,18 +74,19 @@ public class HackingInteractableScript : InteractableObjects
             currentTerminal++;
             enemyReference = GameObject.Find("Enemy1");
             enemyReference.SetActive(false);
+            gameObject.transform.Translate(-6,0,0);
         }
         else if(currentTerminal == 1){
             sparkle2.SetActive(false);
             sparkle3.SetActive(true);
             triggerObject = GameObject.Find("Door3");
             currentTerminal++;
+            gameObject.transform.Translate(-6,0,0);
         }
         else if (currentTerminal == 2){
             sparkle3.SetActive(false);
             Destroy(gameObject);
         }
-        gameObject.transform.Translate(-6,0,0);
 
     }
 
