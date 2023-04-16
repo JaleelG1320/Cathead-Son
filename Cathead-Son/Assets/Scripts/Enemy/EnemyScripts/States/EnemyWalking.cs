@@ -12,13 +12,14 @@ public class EnemyWalking : EnemyBaseState
     private NavMeshAgent navMeshAgent;
     public FieldOfViewScript fovReference;
 
-    public EnemyWalking(CharacterSwap _swapReference, FieldOfViewScript _fovReference, NavMeshAgent _navMeshAgent)
+    public EnemyWalking(CharacterSwap _swapReference, FieldOfViewScript _fovReference, NavMeshAgent _navMeshAgent, float _speed)
     {
         //this.enemyReference = GameObject.FindGameObjectWithTag("Enemy");
         this.swapReference = _swapReference;
         //this.playerReference = swapReference.currentPlayer;
         this.navMeshAgent = _navMeshAgent;
         this.fovReference = _fovReference;
+        this.navMeshAgent.speed = _speed;
     }
 
     public override void EnterState(FieldOfViewScript enemy)
@@ -31,7 +32,6 @@ public class EnemyWalking : EnemyBaseState
         fovReference = enemyReference.GetComponent<FieldOfViewScript>();
         */
         this.playerReference = swapReference.currentPlayer;
-        this.navMeshAgent.speed = 2.5f;
         UpdateState(this.fovReference);
         this.navMeshAgent.isStopped = false;
     }
@@ -42,7 +42,7 @@ public class EnemyWalking : EnemyBaseState
     public override void ExitState(FieldOfViewScript enemy)
     {
         this.navMeshAgent.isStopped = true;
-        this.navMeshAgent.speed = 2.5f;
+        //this.navMeshAgent.speed = 2.5f;
     }
     public override void HandleSight(FieldOfViewScript enemy)
     {

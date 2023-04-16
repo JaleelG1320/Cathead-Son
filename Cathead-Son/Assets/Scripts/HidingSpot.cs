@@ -52,13 +52,11 @@ public class HidingSpot: InteractableObjects
 
     public override void OnFocus()
     {
-        Debug.Log("Focus On Hiding Spot");
         //outline.enabled = true;
     }
 
     public override void OnLoseFocus()
     {
-        Debug.Log("Focus Lost on Hiding Spot");
         //outline.enabled = false;
     }
 }

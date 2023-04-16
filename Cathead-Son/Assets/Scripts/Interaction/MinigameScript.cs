@@ -65,6 +65,7 @@ public class MinigameScript : MonoBehaviour
         else // Player clicked the wrong button.
         {
             Debug.Log("Player selected WRONG button!");
+            InputManager.ToggleActionMap(InputManager._inputActions.Player);
             StartCoroutine(PlayMinigame()); // Reset the minigame.
         }
 
@@ -84,7 +85,6 @@ public class MinigameScript : MonoBehaviour
         RandomNumArrayGen();
         _currentNumInSequence = 0;
         DisableButtons();
-
         var i = 0;
         while (i < _pickedButtons.Length)
         {
@@ -93,14 +93,14 @@ public class MinigameScript : MonoBehaviour
             Color color = currentButton.image.color;
             currentButton.image.color = currentButton.colors.selectedColor;
 
-            Debug.Log(currentButton);
-
             yield return new WaitForSeconds(1f);
 
             i++;
             currentButton.image.color = color;
             ResetButtons();
         }
+        InputManager.ToggleActionMap(InputManager._inputActions.Player);
+        Buttons[Buttons.Length - 1].Select();
     }
 
     private void DisableButtons()
@@ -117,7 +117,5 @@ public class MinigameScript : MonoBehaviour
         {
             button.interactable = true;
         }
-
-        Buttons[Buttons.Length - 1].Select();
     }
 }

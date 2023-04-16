@@ -11,6 +11,7 @@ public class FieldOfViewScript : MonoBehaviour
     public float radius;
     public float hearRadius;
     [Range(0, 360)] public float angle;
+    public float chaseSpeed;
 
 
     [Header("References")]
@@ -40,9 +41,7 @@ public class FieldOfViewScript : MonoBehaviour
     EnemyBaseState currentState;
     EnemyWalking enemyWalkingReference;
     EnemyIdle enemyIdleReference;
-    EnemyIdle enemyIdleReference2;
     public Transform[] idlePositions;
-    public Transform[] idlePositions2;
     public bool currentlySwitching;
     private Animator animator;
     [SerializeField] private AnimationClip enemyIdle;
@@ -59,8 +58,7 @@ public class FieldOfViewScript : MonoBehaviour
         controllerRef = playerRef.GetComponent<ThirdPersonController>();
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         enemyIdleReference = new EnemyIdle(idlePositions, swapReference, this, navMeshAgent);
-        enemyIdleReference2 = new EnemyIdle(idlePositions2, swapReference, this, navMeshAgent);
-        enemyWalkingReference = new EnemyWalking(swapReference, this, navMeshAgent);
+        enemyWalkingReference = new EnemyWalking(swapReference, this, navMeshAgent, chaseSpeed);
         enemyBaseState = enemyIdleReference;
         canvasImage.sprite = enemyIdleImage;
         enemyBaseState.EnterState(this);
@@ -76,7 +74,6 @@ public class FieldOfViewScript : MonoBehaviour
     void Update()
     {
         playerRef = swapReference.currentPlayer; 
-        //Debug.Log("canHearPlayer is: " + canHearPlayer);
         Debug.Log("canSeePlayer is: " + canSeePlayer);
         Debug.Log("isIdle is: " + isIdle);
 
@@ -87,7 +84,6 @@ public class FieldOfViewScript : MonoBehaviour
             SwitchState(enemyWalkingReference);
             canvasImage.sprite = enemyWalkingImage;
         }
-
         /*
         if (canHearPlayer)
         {
