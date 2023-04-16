@@ -17,7 +17,7 @@ public class GameManager :  MonoBehaviour
     [Header("Game Settings")]
     public int volumeSettings;
     public bool vSync;
-    public bool bnwActive;
+    public bool bnwActive = false;
     public Level currentLevel;
 
     [Header("Objective Lists")]
@@ -32,7 +32,13 @@ public class GameManager :  MonoBehaviour
     [SerializeField] private PauseMenu _pauseReference;
 
     [Header("Level List")]
-    public List<Level> levelList = new List<Level>();
+    [SerializeField] private List<Level> levelList = new List<Level>();
+
+    [Header("Shader List")]
+    public Shader _grayScaleShader;
+    public Shader _circleWipeShader;
+    private Material _grayScaleMaterial;
+    private Material _circleWipeMaterial;
 
     public static GameManager instance; //reference to game manager script
     
@@ -43,6 +49,9 @@ public class GameManager :  MonoBehaviour
         {
             instance = this;
 
+            //_grayScaleMaterial = new Material(_grayScaleShader);
+            //_circleWipeMaterial = new Material(_circleWipeShader);
+
             levelList.Add(hubLevel);
             levelList.Add(musueumLevel);
             levelList.Add(studioLevel);
@@ -50,6 +59,9 @@ public class GameManager :  MonoBehaviour
             levelList.Add(tutorialLevel);
             levelList.Add(win_loseLevel);
             levelList.Add(mainMenuLevel);
+
+            Cursor.lockState = CursorLockMode.Locked;
+
             DontDestroyOnLoad(this.gameObject);  //makes sure object isnt destroyed when loading levels
         } 
         else 
@@ -137,6 +149,26 @@ public class GameManager :  MonoBehaviour
     public void GoToMainMenu()
     {
         SwitchLevel(this.currentLevel, this.mainMenuLevel);
+    }
+
+    public void GoToTheHub()
+    {
+        SwitchLevel(this.currentLevel, this.hubLevel);
+    }
+
+    public void GoToWinLoseLevel()
+    {
+        SwitchLevel(this.currentLevel, this.win_loseLevel);
+    }
+
+    public void GoToTutorialLevel()
+    {
+        SwitchLevel(this.currentLevel, this.win_loseLevel);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 
