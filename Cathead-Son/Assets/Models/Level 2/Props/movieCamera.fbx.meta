@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 7e1952bdad3367c46980df6dfa4c0503
+guid: cf3b516894942cc47a0b01aabaf761b9
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stone-texture
+    second: {fileID: 2800000, guid: bbe60cfe02834db458d207494d691f62, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 500
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 5
+    globalScale: 500
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
