@@ -34,7 +34,12 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
-    
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ToggleCanvasGroup(CanvasGroup group)
     {
         if (group.alpha == 0)
