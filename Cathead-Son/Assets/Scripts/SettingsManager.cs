@@ -16,12 +16,36 @@ public class SettingsManager : MonoBehaviour
     public Toggle vSyncToggle;
     [HideInInspector] public int vsyncInt;
 
+
+    [Header("FPS Counter Variables")]
+    public Toggle fpsToggle;
+    public TMP_Text fpsText;
+    public GameObject fpsCounterObject;
+    [HideInInspector] public int fpsInt;
+
+
     [Header("Black White Filter")]
     public Toggle bwToggle;
     [HideInInspector] public int bwInt;
 
     private void Awake()
     {
+        //Check if there is a key for the playerprefs for the fps counter and set the int depending on it
+        if (PlayerPrefs.HasKey("FpsToggleState"))
+            fpsInt = PlayerPrefs.GetInt("FpsToggleState");
+        else
+            fpsInt = 1;
+        if (fpsInt == 1)
+        {
+            fpsToggle.isOn = true;
+            fpsCounterObject.SetActive(true);
+        }
+        else
+        {
+            fpsToggle.isOn = false;
+            fpsCounterObject.SetActive(false);
+        }
+
         //Check if there is a key for the playerprefs for the vsync and set the int depending on it
         if (PlayerPrefs.HasKey("VsyncToggleState"))
             vsyncInt = PlayerPrefs.GetInt("VsyncToggleState");
@@ -37,6 +61,22 @@ public class SettingsManager : MonoBehaviour
         {
             vSyncToggle.isOn = false;
             QualitySettings.vSyncCount = 0;
+        }
+
+        //Check if there is a key for the playerprefs for the vsync and set the int depending on it
+        if (PlayerPrefs.HasKey("VFXToggleState"))
+            bwInt = PlayerPrefs.GetInt("VFXToggleState");
+        else
+            bwInt = 1;
+
+        if (bwInt == 1)
+        {
+            bwToggle.isOn = true;
+        }
+        else
+        {
+            bwToggle.isOn = false;
+            
         }
     }
 
@@ -63,6 +103,57 @@ public class SettingsManager : MonoBehaviour
         masterValueText.text = (masterSlider.value + 80).ToString() + "%";
         theMixer.SetFloat("MasterVol", ConvertToLog(masterSlider.value));
         PlayerPrefs.SetFloat("MasterVolume", masterSlider.value);
+    }
+
+    public void AdjustFpsCounter(bool isFPSOn)
+    {
+        if (!isFPSOn)
+        {
+            PlayerPrefs.SetInt("FpsToggleState", 0);
+            fpsCounterObject.SetActive(false);
+            Debug.Log("FPS Counter is Off");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("FpsToggleState", 1);
+            fpsCounterObject.SetActive(true);
+            Debug.Log("FPS Counter is On");
+        }
+    }
+    public void AdjustVFX(bool isVFXOn)
+    {
+        if (!isVFXOn)
+        {
+            PlayerPrefs.SetInt("VFXToggleState", 0);
+            Debug.Log("VFX Are Off");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("VFXToggleState", 1);
+            Debug.Log("VFX Are On");
+        }
+    }
+    public void AdjustVysnc(bool isVsyncOn)
+    {
+        if (isVsyncOn == false)
+        {
+            PlayerPrefs.SetInt("VsyncToggleState", 0);
+            QualitySettings.vSyncCount = 0;
+            Debug.Log("The Vsync is Off");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("VsyncToggleState", 1);
+            QualitySettings.vSyncCount = 1;
+            Debug.Log("The Vsync is On");
+        }
+    }
+
+    void Update()
+    {
+        //Calculating the FPS
+        float fps = 1 / Time.unscaledDeltaTime;
+        fpsText.text = "FPS: " + fps.ToString("F0");
     }
 
 }
