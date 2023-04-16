@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tommy
       objectReference: {fileID: 0}
+    - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3654963339583668219}
+    - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7454132324671294026, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
       propertyPath: m_Name
       value: Son Variant
@@ -73,3 +85,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+--- !u!1 &4340602090181414833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7454132324671294026, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+  m_PrefabInstance: {fileID: 6579353617258431995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3654963339583668219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340602090181414833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ce42bb44f0d5b49b60364f915d94b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInput: {fileID: 4340602090181414841}
+  GameIsPaused: 0
+  Buttons: []
+  pauseMenuUI: {fileID: 0}
+--- !u!114 &4340602090181414841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7454132324671294018, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+  m_PrefabInstance: {fileID: 6579353617258431995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340602090181414833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

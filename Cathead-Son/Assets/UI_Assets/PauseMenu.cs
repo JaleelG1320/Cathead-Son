@@ -50,8 +50,6 @@ public class PauseMenu : MonoBehaviour
                 Debug.Log("Minigame Actions");
                 InputManager.ToggleActionMap(InputManager._inputActions.Player);
                 InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
-
-                Debug.Log("Poop");
             }
         }
     }

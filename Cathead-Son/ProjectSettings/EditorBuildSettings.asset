@@ -6,20 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI.unity
+    path: Assets/Scenes/Levels/MainMenuLevel.unity
     guid: 01ce5f7c38f1c454a9bc0ba4bcba3ae9
   - enabled: 1
     path: Assets/Scenes/Levels/MusuemLevel.unity
     guid: 4ef0dec6470ec3244a4e9339f8d37521
   - enabled: 1
-    path: Assets/Scenes/WinLoseScreen.unity
+    path: Assets/Scenes/Levels/WinLoseLevel.unity
     guid: 354a5c1cd77a6bc4e9491f3ebf053a66
   - enabled: 1
-    path: Assets/Scenes/HubLevel.unity
-    guid: b3e80bde6fd4b824e939f118051afd84
-  - enabled: 1
-    path: Assets/Scenes/TutorialLevel.unity
+    path: Assets/Scenes/Levels/TutorialLevel.unity
     guid: 0b77f81e1e424d949a89613e3d10bcc4
+  - enabled: 1
+    path: Assets/Scenes/Levels/HubLevel.unity
+    guid: be073cc13bf5c144b87dd3041a9e9159
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d0df07263313c82458ce43e8a773f4c3, type: 2}
     enabled: {fileID: 0}
