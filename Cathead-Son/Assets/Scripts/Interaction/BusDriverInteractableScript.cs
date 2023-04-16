@@ -6,6 +6,7 @@ using Cinemachine;
 public class BusDriverInteractableScript : InteractableObjects
 {
     public GameObject interactPrefab;
+    public GameObject levelUI;
     private GameObject interactIcon;
     private CharacterSwap swapReference;
     private CinemachineVirtualCamera cameraReference;
@@ -21,7 +22,8 @@ public class BusDriverInteractableScript : InteractableObjects
         //turn olma off
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         // spawn ui 
-        interactIcon = Instantiate(interactPrefab, gameObject.transform.position, Quaternion.identity);
+        // interactIcon = Instantiate(interactPrefab, gameObject.transform.position, Quaternion.identity);
+        levelUI.SetActive(true);
         //switch the camera to the level ui 
         CameraSwitcher.SwitchCamera(cameraReference);
         //switch player controls over to the ui 
@@ -43,7 +45,8 @@ public class BusDriverInteractableScript : InteractableObjects
         //turn olma on
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         //destroy ui object
-        Destroy(interactPrefab, 1.5f);
+        //Destroy(interactPrefab, 1.5f);
+        levelUI.SetActive(false);
         //switch camera back to player camera
         CameraSwitcher.SwitchCamera(GameObject.FindGameObjectWithTag("PlayerController").GetComponentInChildren<CinemachineVirtualCamera>());
         //switch controls back to player
