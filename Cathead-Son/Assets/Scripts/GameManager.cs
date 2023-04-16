@@ -119,5 +119,25 @@ public class GameManager :  MonoBehaviour
 
     }
 
+    public void GoToFirstLevel()
+    {
+        SwitchLevel(this.currentLevel, this.musueumLevel);
+    }
+
+    public void GoToSecondLevel()
+    {
+        SwitchLevel(this.currentLevel, this.studioLevel);
+    }
+
+    public void GoToThirdLevel()
+    {
+        SwitchLevel(this.currentLevel, this.officeLevel);
+    }
+
+    public void GoToMainMenu()
+    {
+        SwitchLevel(this.currentLevel, this.mainMenuLevel);
+    }
+
 
 }
