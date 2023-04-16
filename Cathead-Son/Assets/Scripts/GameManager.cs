@@ -29,7 +29,7 @@ public class GameManager :  MonoBehaviour
     [Header("Script References")]
     [SerializeField] private PostProcessingManager _processingReference;
     [SerializeField] private CharacterSwap _swapReference;
-    [SerializeField] private PauseMenu _pauseReference;
+    //[SerializeField] private PauseMenu _pauseReference;
 
     [Header("Level List")]
     public List<Level> levelList = new List<Level>();

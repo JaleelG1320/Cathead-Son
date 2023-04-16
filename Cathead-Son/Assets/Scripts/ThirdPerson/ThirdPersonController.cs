@@ -113,6 +113,27 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
+    public void Toggle(InputAction.CallbackContext obj)
+    {
+        if (obj.started)
+        {
+            if (UIManager.instance.GameIsPaused)
+            {
+                UIManager.instance.Resume();
+                Debug.Log("Player Actions");
+                InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
+                InputManager.ToggleActionMap(InputManager._inputActions.Player);
+            }
+            else
+            {
+                UIManager.instance.Pause();
+                Debug.Log("Minigame Actions");
+                InputManager.ToggleActionMap(InputManager._inputActions.Player);
+                InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
+            }
+        }
+    }
+
     public void DoLook(InputAction.CallbackContext obj)
     {
         _look = obj.ReadValue<Vector2>();
