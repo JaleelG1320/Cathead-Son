@@ -31,20 +31,24 @@ public class SettingsManager : MonoBehaviour
     private void Awake()
     {
         //Check if there is a key for the playerprefs for the fps counter and set the int depending on it
-        if (PlayerPrefs.HasKey("FpsToggleState"))
-            fpsInt = PlayerPrefs.GetInt("FpsToggleState");
-        else
-            fpsInt = 1;
-        if (fpsInt == 1)
+        if(GameManager.instance.currentLevel.sceneName != "MainMenuLevel")
         {
-            fpsToggle.isOn = true;
-            fpsCounterObject.SetActive(true);
+            if (PlayerPrefs.HasKey("FpsToggleState"))
+                fpsInt = PlayerPrefs.GetInt("FpsToggleState");
+            else
+                fpsInt = 1;
+            if (fpsInt == 1)
+            {
+                fpsToggle.isOn = true;
+                fpsCounterObject.SetActive(true);
+            }
+            else
+            {
+                fpsToggle.isOn = false;
+                fpsCounterObject.SetActive(false);
+            }
         }
-        else
-        {
-            fpsToggle.isOn = false;
-            fpsCounterObject.SetActive(false);
-        }
+        
 
         //Check if there is a key for the playerprefs for the vsync and set the int depending on it
         if (PlayerPrefs.HasKey("VsyncToggleState"))

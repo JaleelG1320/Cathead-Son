@@ -17,6 +17,7 @@ public class BossEventTrigger : MonoBehaviour, ITriggerable
     public static int bossHitCount = 0;
     public void Awake()
     {
+        bossHitCount = 0;
         idlePositions[sequenceNum] = BossPos;
         RoomCamera = GetComponentInChildren<CinemachineVirtualCameraBase>();
         CameraSwitcher.Register(RoomCamera.gameObject.GetComponent<CinemachineVirtualCameraBase>());
@@ -44,14 +45,12 @@ public class BossEventTrigger : MonoBehaviour, ITriggerable
         if (bossHitCount <= lastCount)
         {
             // Player Missed! Game Over!
-            Debug.Log("GAME OVER!");
             Destroy(this);
             return;
         }
         if(bossHitCount >= 3)
         {
             // Boss Hit 3 Times! Game won!
-            Debug.Log("GAME WON!");
             Destroy(this);
             return;
         }
