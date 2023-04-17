@@ -57,7 +57,41 @@ public class CatheadUIScript : MonoBehaviour
         creditsUI.SetActive(true);
         startMenuUI.SetActive(false);
 
-        Button creditsBackButton = optionsUI.GetComponentInChildren<Button>();
+        Button creditsBackButton = creditsUI.GetComponentInChildren<Button>();
         creditsBackButton.Select();
+    }
+
+    public void ControlSelect()
+    {
+
+        controlUI.SetActive(true);
+        startMenuUI.SetActive(false);
+
+        Button controlBackButton = controlUI.GetComponentInChildren<Button>();
+        controlBackButton.Select();
+    }
+
+    public void OptionsBackSelect()
+    {
+        optionsUI.SetActive(false);
+        startMenuUI.SetActive(true);
+
+        GameManager.instance.GoToMainMenu();
+    }
+
+    public void ControlsBackSelect()
+    {
+        optionsUI.SetActive(false);
+        startMenuUI.SetActive(true);
+
+        GameManager.instance.GoToMainMenu();
+    }
+
+    public void CreditsBackSelect()
+    {
+        optionsUI.SetActive(false);
+        startMenuUI.SetActive(true);
+
+        GameManager.instance.GoToMainMenu();
     }
 }
