@@ -98,6 +98,11 @@ public class InputAssetController : ScriptableObject, ThirdPersonActionsAsset.IP
 		
 	}
 
+	public void OnQuit(InputAction.CallbackContext input)
+	{
+		Application.Quit();
+	}
+
 	public void OnResume(InputAction.CallbackContext input)
 	{
 		if (input.phase == InputActionPhase.Performed)

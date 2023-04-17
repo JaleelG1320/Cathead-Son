@@ -98,6 +98,15 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbbc6050-9f54-4a1f-bd7d-88cfa130a922"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -331,6 +340,17 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9331cb6e-7487-4ef7-b90d-d8776e92cf87"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -378,7 +398,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
             ""id"": ""d4027e69-3c55-4773-872b-42c15f9d06e8"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Resume"",
                     ""type"": ""Button"",
                     ""id"": ""973b8721-5c12-40a9-b5d8-018041cfb6c0"",
                     ""expectedControlType"": ""Button"",
@@ -481,11 +501,22 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 {
                     ""name"": """",
                     ""id"": ""c2e97fac-9ac4-4ef5-98d5-3bb993f11d2a"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d7f141d-944b-42bb-960e-6dd5b5d9d367"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -767,7 +798,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 {
                     ""name"": """",
                     ""id"": ""59ca7c96-be7a-4b58-97cd-dc131fd0c439"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -933,12 +964,13 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
         // Minigame
         m_Minigame = asset.FindActionMap("Minigame", throwIfNotFound: true);
-        m_Minigame_Newaction = m_Minigame.FindAction("New action", throwIfNotFound: true);
+        m_Minigame_Resume = m_Minigame.FindAction("Resume", throwIfNotFound: true);
         m_Minigame_TrackedDeviceOrientation = m_Minigame.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_Minigame_TrackedDevicePosition = m_Minigame.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_Minigame_RightClick = m_Minigame.FindAction("RightClick", throwIfNotFound: true);
@@ -1016,6 +1048,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_Quit;
     public struct PlayerActions
     {
         private @ThirdPersonActionsAsset m_Wrapper;
@@ -1028,6 +1061,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
+        public InputAction @Quit => m_Wrapper.m_Player_Quit;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1061,6 +1095,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 @Crouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
+                @Quit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
+                @Quit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
+                @Quit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1089,6 +1126,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Quit.started += instance.OnQuit;
+                @Quit.performed += instance.OnQuit;
+                @Quit.canceled += instance.OnQuit;
             }
         }
     }
@@ -1130,7 +1170,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
     // Minigame
     private readonly InputActionMap m_Minigame;
     private IMinigameActions m_MinigameActionsCallbackInterface;
-    private readonly InputAction m_Minigame_Newaction;
+    private readonly InputAction m_Minigame_Resume;
     private readonly InputAction m_Minigame_TrackedDeviceOrientation;
     private readonly InputAction m_Minigame_TrackedDevicePosition;
     private readonly InputAction m_Minigame_RightClick;
@@ -1145,7 +1185,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
     {
         private @ThirdPersonActionsAsset m_Wrapper;
         public MinigameActions(@ThirdPersonActionsAsset wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Minigame_Newaction;
+        public InputAction @Resume => m_Wrapper.m_Minigame_Resume;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_Minigame_TrackedDeviceOrientation;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_Minigame_TrackedDevicePosition;
         public InputAction @RightClick => m_Wrapper.m_Minigame_RightClick;
@@ -1165,9 +1205,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         {
             if (m_Wrapper.m_MinigameActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_MinigameActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_MinigameActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_MinigameActionsCallbackInterface.OnNewaction;
+                @Resume.started -= m_Wrapper.m_MinigameActionsCallbackInterface.OnResume;
+                @Resume.performed -= m_Wrapper.m_MinigameActionsCallbackInterface.OnResume;
+                @Resume.canceled -= m_Wrapper.m_MinigameActionsCallbackInterface.OnResume;
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_MinigameActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_MinigameActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_MinigameActionsCallbackInterface.OnTrackedDeviceOrientation;
@@ -1202,9 +1242,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
             m_Wrapper.m_MinigameActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Resume.started += instance.OnResume;
+                @Resume.performed += instance.OnResume;
+                @Resume.canceled += instance.OnResume;
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
@@ -1249,6 +1289,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1256,7 +1297,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
     }
     public interface IMinigameActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnResume(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
