@@ -74,5 +74,6 @@ public class PlayerInteractionScript : MonoBehaviour
     void Delay()
     {
         _currentInteractableObject.OnInteract();
+        anim.Play("Idle", -1, 0f);
     }
 }
