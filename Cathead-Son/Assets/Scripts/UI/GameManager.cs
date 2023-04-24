@@ -69,7 +69,7 @@ public class GameManager :  MonoBehaviour
             levelList.Add(win_loseLevel);
             levelList.Add(mainMenuLevel);
 
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
 
             DontDestroyOnLoad(this.gameObject);  //makes sure object isnt destroyed when loading levels
         } 
@@ -112,9 +112,9 @@ public class GameManager :  MonoBehaviour
         //set target level to active 
         this.currentLevel.isActive = true;
         //set loading screen to be active
-        this.loadingScreen.SetActive(true);
+        //this.loadingScreen.SetActive(true);
         //start corotuine to display tips
-        DisplayLoadInformation(_targetLevel);
+        //DisplayLoadInformation(_targetLevel);
 
         //change scene one all tips have been displayed
         SceneManager.LoadScene(this.currentLevel.sceneName, LoadSceneMode.Single);

@@ -48,7 +48,10 @@ public class PlayerInteractionScript : MonoBehaviour
                     if (_currentInteractableObject)
                     {
                         _currentInteractableObject.OnFocus(); // Focus on it.
-                        Graphics.DrawMesh(_currentInteractableObject.GetComponent<Mesh>(), _currentInteractableObject.transform.position,  _currentInteractableObject.transform.rotation, _toonShaderMaterial, 6, _playerCamera);
+                        if (_currentInteractableObject.TryGetComponent<Outline>(out Outline component))
+                        {
+                            component.enabled = true;
+                        }
                     }
                 }
             }
@@ -56,6 +59,10 @@ public class PlayerInteractionScript : MonoBehaviour
         else if (_currentInteractableObject) // We didnt not find any interactables, lose focus on our current one.
         {
             _currentInteractableObject.OnLoseFocus();
+            if (_currentInteractableObject.TryGetComponent<Outline>(out Outline component))
+            {
+                component.enabled = false;
+            }
             _currentInteractableObject = null;
         }
 
