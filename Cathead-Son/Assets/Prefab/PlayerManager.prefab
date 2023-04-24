@@ -1334,6 +1334,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 265687114}
     - target: {fileID: 6627367619409579372, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
+      propertyPath: _toonShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f2b1549ad581cb9449b8720219921abb, type: 3}
+    - target: {fileID: 6627367619409579372, guid: e8c8f7fc2fe182e4bb2212eb37d5ad98, type: 3}
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 12962134027031983}
@@ -1371,6 +1375,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 2002021688871515173}
+    - target: {fileID: 51700123474544791, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
+      propertyPath: _toonShader
+      value: 
+      objectReference: {fileID: 4800000, guid: f2b1549ad581cb9449b8720219921abb, type: 3}
     - target: {fileID: 51700123474544791, guid: c508c8ce4d33f3d418b1fbba7029f4ea, type: 3}
       propertyPath: playerCamera
       value: 

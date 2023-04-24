@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager :  MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class GameManager :  MonoBehaviour
     public Level tutorialLevel;
     public Level win_loseLevel;
     public Level mainMenuLevel;
+    
 
     [Header("Game Settings")]
     public int volumeSettings;
@@ -30,6 +33,12 @@ public class GameManager :  MonoBehaviour
     [SerializeField] private PostProcessingManager _processingReference;
     [SerializeField] private CharacterSwap _swapReference;
     //[SerializeField] private PauseMenu _pauseReference;
+
+    [Header("Loading Screen")]
+    public GameObject loadingScreen; //used to toggle the loading screen in and out for levels
+    public TextMeshProUGUI tipText; //reference to text used to display tips
+    public CanvasGroup loadCanvasGroup; //controlling alpha for tip text
+
 
     [Header("Level List")]
     [SerializeField] private List<Level> levelList = new List<Level>();
@@ -102,7 +111,12 @@ public class GameManager :  MonoBehaviour
         this.currentLevel = _targetLevel;
         //set target level to active 
         this.currentLevel.isActive = true;
-        //change scene
+        //set loading screen to be active
+        this.loadingScreen.SetActive(true);
+        //start corotuine to display tips
+        DisplayLoadInformation(_targetLevel);
+
+        //change scene one all tips have been displayed
         SceneManager.LoadScene(this.currentLevel.sceneName, LoadSceneMode.Single);
     }
 
@@ -169,6 +183,31 @@ public class GameManager :  MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }   
+
+    public int tipCount;
+    private IEnumerator DisplayLoadInformation(Level targetLevel)
+    {
+        tipCount = 0;
+        this.tipText.text = targetLevel.objectiveList[tipCount];
+        while (loadingScreen.activeInHierarchy)
+        {
+            yield return new WaitForSeconds(3f);
+
+            loadCanvasGroup.alpha = Mathf.MoveTowards(0f, 0.5f, 0.25f);
+
+            yield return new WaitForSeconds(3f);
+
+            tipCount++;
+            if (tipCount >= targetLevel.objectiveList.Count)
+            {
+                tipCount = 0;
+            }
+
+            this.tipText.text = targetLevel.objectiveList[tipCount];
+
+            loadCanvasGroup.alpha = Mathf.MoveTowards(0f, 0.5f, 0.25f);
+        }
     }
 
 
