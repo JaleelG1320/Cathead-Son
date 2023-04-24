@@ -15,6 +15,9 @@ public class GameManager :  MonoBehaviour
     public Level tutorialLevel;
     public Level win_loseLevel;
     public Level mainMenuLevel;
+    public Level infoMusuem;
+    public Level infoStudio;
+    public Level infoOffice;
     
 
     [Header("Game Settings")]
@@ -49,6 +52,7 @@ public class GameManager :  MonoBehaviour
     private Material _grayScaleMaterial;
     private Material _circleWipeMaterial;
 
+
     public static GameManager instance; //reference to game manager script
     
 
@@ -68,6 +72,9 @@ public class GameManager :  MonoBehaviour
             levelList.Add(tutorialLevel);
             levelList.Add(win_loseLevel);
             levelList.Add(mainMenuLevel);
+            levelList.Add(infoMusuem);
+            levelList.Add(infoStudio);
+            levelList.Add(infoOffice);
 
             Cursor.lockState = CursorLockMode.Locked;
 
@@ -106,15 +113,15 @@ public class GameManager :  MonoBehaviour
     {
         Debug.Log("Switching Level");
         //set current level to not active 
-        this.currentLevel.isActive = false;
+        //this.currentLevel.isActive = false;
         //change current level to target level
         this.currentLevel = _targetLevel;
         //set target level to active 
         this.currentLevel.isActive = true;
         //set loading screen to be active
-        this.loadingScreen.SetActive(true);
+        //this.loadingScreen.SetActive(true);
         //start corotuine to display tips
-        DisplayLoadInformation(_targetLevel);
+        //DisplayLoadInformation(_targetLevel);
 
         //change scene one all tips have been displayed
         SceneManager.LoadScene(this.currentLevel.sceneName, LoadSceneMode.Single);
@@ -179,6 +186,18 @@ public class GameManager :  MonoBehaviour
     {
         SwitchLevel(this.currentLevel, this.win_loseLevel);
     }
+    public void GoToMusuemLevel()
+    {
+        SwitchLevel(this.currentLevel, this.infoMusuem);
+    }
+    public void GoToStudioLevel()
+    {
+        SwitchLevel(this.currentLevel, this.infoStudio);
+    }
+    public void GoToOfficeLevel()
+    {
+        SwitchLevel(this.currentLevel, this.infoOffice);
+    }
 
     public void QuitGame()
     {
@@ -186,7 +205,7 @@ public class GameManager :  MonoBehaviour
     }   
 
     public int tipCount;
-    private IEnumerator DisplayLoadInformation(Level targetLevel)
+    /*private IEnumerator DisplayLoadInformation(Level targetLevel)
     {
         tipCount = 0;
         this.tipText.text = targetLevel.objectiveList[tipCount];
@@ -208,7 +227,7 @@ public class GameManager :  MonoBehaviour
 
             loadCanvasGroup.alpha = Mathf.MoveTowards(0f, 0.5f, 0.25f);
         }
-    }
+    }*/
 
 
 }

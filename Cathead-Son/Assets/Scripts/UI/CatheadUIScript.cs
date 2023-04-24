@@ -13,17 +13,18 @@ public class CatheadUIScript : MonoBehaviour
 
     public void GoToFirstLevel()
     {
-        GameManager.instance.GoToFirstLevel();
+
+        GameManager.instance.GoToMusuemLevel();
     }
 
     public void GoToSecondLevel()
     {
-        GameManager.instance.GoToSecondLevel();
+        GameManager.instance.GoToStudioLevel();
     }
 
     public void GoToThirdLevel()
     {
-        GameManager.instance.GoToThirdLevel();
+        GameManager.instance.GoToOfficeLevel();
     }
 
     public void GoToTheHub()
