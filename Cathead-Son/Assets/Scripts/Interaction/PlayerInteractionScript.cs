@@ -15,11 +15,13 @@ public class PlayerInteractionScript : MonoBehaviour
     private Collider[] _interactableObjectsInArea;
     public Animator anim;
     private IEnumerator coroutine;
+    public Shader _toonShader;
+    private Material _toonShaderMaterial;
     
     // Start is called before the first frame update
     void Start()    
     {
-
+        _toonShaderMaterial = new Material(_toonShader);
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class PlayerInteractionScript : MonoBehaviour
                     if (_currentInteractableObject)
                     {
                         _currentInteractableObject.OnFocus(); // Focus on it.
+                        Graphics.DrawMesh(_currentInteractableObject.GetComponent<Mesh>(), _currentInteractableObject.transform.position,  _currentInteractableObject.transform.rotation, _toonShaderMaterial, 6, _playerCamera);
                     }
                 }
             }
