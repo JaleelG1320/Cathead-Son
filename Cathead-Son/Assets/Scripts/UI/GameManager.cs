@@ -76,7 +76,7 @@ public class GameManager :  MonoBehaviour
             levelList.Add(infoStudio);
             levelList.Add(infoOffice);
 
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
 
             DontDestroyOnLoad(this.gameObject);  //makes sure object isnt destroyed when loading levels
         } 
