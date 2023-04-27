@@ -48,7 +48,7 @@ public class BossEventTrigger : MonoBehaviour, ITriggerable
             Destroy(this);
             return;
         }
-        if(bossHitCount >= 3)
+        if(bossHitCount >= 2)
         {
             // Boss Hit 3 Times! Game won!
             Destroy(this);
