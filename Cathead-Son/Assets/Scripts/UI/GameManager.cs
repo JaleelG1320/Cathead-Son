@@ -205,7 +205,8 @@ public class GameManager :  MonoBehaviour
     }   
 
     public int tipCount;
-    /*private IEnumerator DisplayLoadInformation(Level targetLevel)
+    /*
+    private IEnumerator DisplayLoadInformation(Level targetLevel)
     {
         tipCount = 0;
         this.tipText.text = targetLevel.objectiveList[tipCount];

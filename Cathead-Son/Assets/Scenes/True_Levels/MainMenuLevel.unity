@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2202,6 +2202,9 @@ MonoBehaviour:
   tutorialLevel: {fileID: 11400000, guid: 01e9975977baa9343a93c715cae825a7, type: 2}
   win_loseLevel: {fileID: 11400000, guid: 6cfbc177b713dd64e9ac75399fa722b1, type: 2}
   mainMenuLevel: {fileID: 11400000, guid: 2b16deec187e6c549a8ec2639defabe5, type: 2}
+  infoMusuem: {fileID: 11400000, guid: 6b00008d1e2e11149b2a1b49b6f0bc69, type: 2}
+  infoStudio: {fileID: 11400000, guid: bdcc2097616136043a86bc8c991d1c01, type: 2}
+  infoOffice: {fileID: 11400000, guid: 98cb3cbbc8d55714aba55ebd4ed6a1e4, type: 2}
   volumeSettings: 0
   vSync: 0
   bnwActive: 0
@@ -4267,6 +4270,9 @@ MonoBehaviour:
   startMenuUI: {fileID: 1606489411}
   controlUI: {fileID: 1181442069}
   creditsUI: {fileID: 483112793}
+  level1CompleteUI: {fileID: 0}
+  level2CompleteUI: {fileID: 0}
+  level3CompleteUI: {fileID: 0}
 --- !u!1 &1576978827
 GameObject:
   m_ObjectHideFlags: 0

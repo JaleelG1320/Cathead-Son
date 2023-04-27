@@ -18,13 +18,27 @@ public class PressurePlateInteractionScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        PressurePlateManager.plateAmount++;
-        Debug.Log(PressurePlateManager.plateAmount);
+        if (gameObject.name == "plate_1")
+        {
+            PressurePlateManager.plate1 = true;
+        }
+
+        if (gameObject.name == "plate_2")
+        {
+            PressurePlateManager.plate2 = true;
+        }
     }
 
     void OnTriggerExit(Collider collision)
     {
-        PressurePlateManager.plateAmount--;
-        Debug.Log(PressurePlateManager.plateAmount);
+        if (gameObject.name == "plate_1")
+        {
+            PressurePlateManager.plate1 = false;
+        }
+
+        if (gameObject.name == "plate_2")
+        {
+            PressurePlateManager.plate2 = false;
+        }
     }
 }

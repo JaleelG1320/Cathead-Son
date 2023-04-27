@@ -15,11 +15,6 @@ public class CatheadUIScript : MonoBehaviour
     public GameObject level2CompleteUI;
     public GameObject level3CompleteUI;
 
-    [Header("Hub Objects")]
-    public GameObject level1CompleteObject;
-    public GameObject level2CompleteObject;
-    public GameObject level3CompleteObject;
-
 
     public void GoToFirstLevel()
     {
@@ -65,31 +60,37 @@ public class CatheadUIScript : MonoBehaviour
 
     private void Start()
     {
+
+
         //checks if player has completed level, if so, put paw print over level
-        if (GameManager.instance.musueumLevel.isCompleted)
+        if (GameManager.instance.currentLevel.sceneName == "HubLevel")
         {
-            level1CompleteUI.SetActive(true);
+            if (GameManager.instance.musueumLevel.isCompleted)
+            {
+                level1CompleteUI.SetActive(true);
+            }
+            else
+            {
+                level1CompleteUI.SetActive(false);
+            }
+            if (GameManager.instance.studioLevel.isCompleted)
+            {
+                level2CompleteUI.SetActive(true);
+            }
+            else
+            {
+                level2CompleteUI.SetActive(false);
+            }
+            if (GameManager.instance.officeLevel.isCompleted)
+            {
+                level3CompleteUI.SetActive(true);
+            }
+            else
+            {
+                level3CompleteUI.SetActive(false);
+            }
         }
-        else
-        {
-            level1CompleteUI.SetActive(false);
-        }
-        if (GameManager.instance.studioLevel.isCompleted)
-        {
-            level2CompleteUI.SetActive(true);
-        }
-        else
-        {
-            level2CompleteUI.SetActive(false);
-        }
-        if (GameManager.instance.officeLevel.isCompleted)
-        {
-            level3CompleteUI.SetActive(true);
-        }
-        else
-        {
-            level3CompleteUI.SetActive(false);
-        }
+
     }
 
     public void OptionsSelect()

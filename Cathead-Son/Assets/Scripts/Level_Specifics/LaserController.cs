@@ -61,7 +61,16 @@ public class LaserController : MonoBehaviour, ITriggerable
     public void OnTriggerEnter(Collider other)
     {
         if ((TargetLayer.value & (1 << other.gameObject.layer)) > 0)
-            if (!HidingSpot.PlayerController.IsHiding)
-                GameManager.instance.OnLevelFailed();
+        {
+            if (other.TryGetComponent<ThirdPersonController>(out ThirdPersonController tpc))
+            {
+                if (!HidingSpot.PlayerController.IsHiding && tpc.enabled)
+                {
+                    GameManager.instance.OnLevelFailed();
+                }
+            }
+            
+        }
+
     }
 }

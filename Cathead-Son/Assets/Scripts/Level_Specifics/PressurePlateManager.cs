@@ -5,17 +5,19 @@ using UnityEngine;
 public class PressurePlateManager : MonoBehaviour
 {
     public GameObject[] doorTrigger;
-    public static int plateAmount;
+    public static bool plate1;
+    public static bool plate2;
     // Start is called before the first frame update
     void Start()
     {
-        plateAmount = 0;
+        plate1 = false;
+        plate2 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (plateAmount >= 2)
+        if (plate1 && plate2)
         {
             foreach (GameObject go in doorTrigger)
             {
