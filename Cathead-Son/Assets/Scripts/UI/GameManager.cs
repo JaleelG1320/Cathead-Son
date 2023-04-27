@@ -174,6 +174,7 @@ public class GameManager :  MonoBehaviour
 
     public void GoToTheHub()
     {
+        Debug.Log("Going to the Hub");
         SwitchLevel(this.currentLevel, this.hubLevel);
     }
 
@@ -188,13 +189,25 @@ public class GameManager :  MonoBehaviour
     }
     public void GoToMusuemLevel()
     {
-        SwitchLevel(this.currentLevel, this.infoMusuem);
+        SwitchLevel(this.currentLevel, this.musueumLevel);
     }
     public void GoToStudioLevel()
     {
-        SwitchLevel(this.currentLevel, this.infoStudio);
+        SwitchLevel(this.currentLevel, this.studioLevel);
     }
     public void GoToOfficeLevel()
+    {
+        SwitchLevel(this.currentLevel, this.officeLevel);
+    }
+    public void GoToInfoMusueumLevel()
+    {
+        SwitchLevel(this.currentLevel, this.infoMusuem);
+    }
+    public void GoToInfoStudioLevel()
+    {
+        SwitchLevel(this.currentLevel, this.infoStudio);
+    }
+    public void GoToInfoOfficeLevel()
     {
         SwitchLevel(this.currentLevel, this.infoOffice);
     }

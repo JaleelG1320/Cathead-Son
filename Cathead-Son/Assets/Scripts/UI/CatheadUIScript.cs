@@ -16,6 +16,34 @@ public class CatheadUIScript : MonoBehaviour
     public GameObject level3CompleteUI;
 
 
+    public void GoToInfoFirstLevel()
+    {
+        if (GameManager.instance.musueumLevel.isCompleted)
+        {
+            return;
+        }
+        GameManager.instance.GoToInfoMusueumLevel();
+    }
+
+    public void GoToInfoSecondLevel()
+    {
+        if (GameManager.instance.studioLevel.isCompleted)
+        {
+            return;
+        }
+        GameManager.instance.GoToInfoStudioLevel();
+    }
+
+    public void GoToInfoThirdLevel()
+    {
+        if (GameManager.instance.officeLevel.isCompleted)
+        {
+            return;
+        }
+        GameManager.instance.GoToInfoOfficeLevel();
+    }
+
+
     public void GoToFirstLevel()
     {
         if (GameManager.instance.musueumLevel.isCompleted)
