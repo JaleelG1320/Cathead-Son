@@ -13,8 +13,8 @@ public class LightSwitchInteract : InteractableObjects
     public override void OnInteract()
     {
         Debug.Log("Interacted with " + gameObject.name);
-        anim.Play("Flip", -1, 0f);
         this.TriggerEvent();
+        anim.enabled = true;
     }
     public override void OnFocus()
     {
