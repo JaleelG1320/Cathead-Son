@@ -7,7 +7,7 @@ public class CarMover : MonoBehaviour
     public GameObject startMarker;
     public GameObject endMarker;
 
-    public float speed = 1.0F;
+    public float speed = 2.0F;
     private float startTime;
     private float journeyLength;
     
@@ -34,7 +34,7 @@ public class CarMover : MonoBehaviour
         }
         if(Tunnel){
             gameObject.SetActive(false);
-            Invoke(nameof(RespawnCar), 3);
+            Invoke(nameof(RespawnCar), 2);
             Tunnel = false;
         }
 
