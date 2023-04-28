@@ -74,8 +74,6 @@ public class FieldOfViewScript : MonoBehaviour
     void Update()
     {
         playerRef = swapReference.currentPlayer; 
-        Debug.Log("canSeePlayer is: " + canSeePlayer);
-        Debug.Log("isIdle is: " + isIdle);
 
         if (canSeePlayer && !(controllerRef.IsHiding))
         {
@@ -217,7 +215,6 @@ public class FieldOfViewScript : MonoBehaviour
     private void SwitchState(EnemyBaseState enemy)
     {
         
-        Debug.Log("Switched state to: " + enemy.ToString());
         currentlySwitching = true;
         enemyBaseState.ExitState(this);
 

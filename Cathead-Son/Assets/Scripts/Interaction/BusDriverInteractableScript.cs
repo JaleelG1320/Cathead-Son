@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class BusDriverInteractableScript : InteractableObjects
 {
@@ -24,6 +25,7 @@ public class BusDriverInteractableScript : InteractableObjects
         // spawn ui 
         // interactIcon = Instantiate(interactPrefab, gameObject.transform.position, Quaternion.identity);
         levelUI.SetActive(true);
+        levelUI.transform.GetChild(0).GetComponentInChildren<Button>().Select();
         //switch the camera to the level ui 
         CameraSwitcher.SwitchCamera(cameraReference);
         //switch player controls over to the ui 
