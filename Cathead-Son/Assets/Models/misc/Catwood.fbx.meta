@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 7dd02effba02543429ea450b67ab58fc
+guid: 758ecfc07eb615040af69d7ff4f4539c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Catwood
+    second: {fileID: 2100000, guid: 03497bf6fd726d943b5c4217972f4d30, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: My first wood shader
+    second: {fileID: 2800000, guid: f8ed9ad74621ddc4bbb9b4e2f85b5e96, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WoodFloor011_2K_NormalDX
+    second: {fileID: 2800000, guid: 170242fed5687804c99365ed0be219f0, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
