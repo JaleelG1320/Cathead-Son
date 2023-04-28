@@ -111,5 +111,55 @@ public class InputAssetController : ScriptableObject, ThirdPersonActionsAsset.IP
 			SetPlayer();
 		}
 	}
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnMove(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnInteract(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnLook(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnSwap(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnPause(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnJump(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnSprint(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnCrouch(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnQuit(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ThirdPersonActionsAsset.IPlayerActions.OnCloseUI(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 }
 

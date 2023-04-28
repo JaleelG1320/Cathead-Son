@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class BusDriverInteractableScript : InteractableObjects
 {
@@ -15,6 +16,7 @@ public class BusDriverInteractableScript : InteractableObjects
     {
         swapReference = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<CharacterSwap>();
         cameraReference = GetComponentInChildren<CinemachineVirtualCamera>();
+        CameraSwitcher.Register(cameraReference);
         
     }
 
@@ -42,18 +44,27 @@ public class BusDriverInteractableScript : InteractableObjects
         
     }
 
-    public void CloseLevelUI()
+    public void CloseLevelUI(InputAction.CallbackContext obj)
     {
-        //turn olma on
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        //destroy ui object
-        //Destroy(interactPrefab, 1.5f);
-        levelUI.SetActive(false);
-        //switch camera back to player camera
-        CameraSwitcher.SwitchCamera(GameObject.FindGameObjectWithTag("PlayerController").GetComponentInChildren<CinemachineVirtualCamera>());
-        //switch controls back to player
-        InputManager._inputActions.Minigame.Disable();
-        InputManager._inputActions.Player.Enable();
-        InputManager.ToggleActionMap(InputManager._inputActions.Player);
+        if (GameObject.Find("BusDriver").activeInHierarchy)
+        {
+            if (obj.started)
+            {
+                Debug.Log("Closing UI");
+                //turn olma on
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                //destroy ui object
+                //Destroy(interactPrefab, 1.5f);
+                levelUI.SetActive(false);
+                //switch camera back to player camera
+                CameraSwitcher.SwitchCamera(swapReference.gameObject.GetComponentInChildren<CinemachineVirtualCameraBase>());
+                //switch controls back to player
+                InputManager._inputActions.Minigame.Disable();
+                InputManager._inputActions.Player.Enable();
+                InputManager.ToggleActionMap(InputManager._inputActions.Player);
+            }
+        }
+
+
     }
 }

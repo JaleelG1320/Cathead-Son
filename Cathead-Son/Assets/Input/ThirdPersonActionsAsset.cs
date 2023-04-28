@@ -107,6 +107,15 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""e85da45a-4d7d-4faf-bd93-8d783a65f1fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -244,17 +253,6 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 },
                 {
                     ""name"": """",
-                    ""id"": ""981abde2-ba8f-45f4-91f9-9efd8120d69b"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""21a4ed4e-2206-4ba0-a6d5-4a6445e2dde5"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -349,6 +347,28 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""165a6de9-465f-41d2-b828-c40ace98113f"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""383078b4-a73c-4946-896a-7cd6634f928b"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -492,6 +512,15 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                     ""type"": ""PassThrough"",
                     ""id"": ""2d954685-cacd-44bc-9788-49f4fe8a6ec5"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""c478a8f1-072a-4988-a931-db5ff8a9b696"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -948,6 +977,28 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03ac69cc-e6a9-411b-8c3b-223acf37ad3c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""044312c8-5734-4943-a1e1-13f9c4739197"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -965,6 +1016,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
+        m_Player_CloseUI = m_Player.FindAction("CloseUI", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
@@ -981,6 +1033,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         m_Minigame_Cancel = m_Minigame.FindAction("Cancel", throwIfNotFound: true);
         m_Minigame_Submit = m_Minigame.FindAction("Submit", throwIfNotFound: true);
         m_Minigame_Navigate = m_Minigame.FindAction("Navigate", throwIfNotFound: true);
+        m_Minigame_CloseUI = m_Minigame.FindAction("CloseUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1049,6 +1102,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Quit;
+    private readonly InputAction m_Player_CloseUI;
     public struct PlayerActions
     {
         private @ThirdPersonActionsAsset m_Wrapper;
@@ -1062,6 +1116,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Quit => m_Wrapper.m_Player_Quit;
+        public InputAction @CloseUI => m_Wrapper.m_Player_CloseUI;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1098,6 +1153,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 @Quit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
                 @Quit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
                 @Quit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuit;
+                @CloseUI.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseUI;
+                @CloseUI.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseUI;
+                @CloseUI.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseUI;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1129,6 +1187,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 @Quit.started += instance.OnQuit;
                 @Quit.performed += instance.OnQuit;
                 @Quit.canceled += instance.OnQuit;
+                @CloseUI.started += instance.OnCloseUI;
+                @CloseUI.performed += instance.OnCloseUI;
+                @CloseUI.canceled += instance.OnCloseUI;
             }
         }
     }
@@ -1181,6 +1242,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
     private readonly InputAction m_Minigame_Cancel;
     private readonly InputAction m_Minigame_Submit;
     private readonly InputAction m_Minigame_Navigate;
+    private readonly InputAction m_Minigame_CloseUI;
     public struct MinigameActions
     {
         private @ThirdPersonActionsAsset m_Wrapper;
@@ -1196,6 +1258,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         public InputAction @Cancel => m_Wrapper.m_Minigame_Cancel;
         public InputAction @Submit => m_Wrapper.m_Minigame_Submit;
         public InputAction @Navigate => m_Wrapper.m_Minigame_Navigate;
+        public InputAction @CloseUI => m_Wrapper.m_Minigame_CloseUI;
         public InputActionMap Get() { return m_Wrapper.m_Minigame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1238,6 +1301,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 @Navigate.started -= m_Wrapper.m_MinigameActionsCallbackInterface.OnNavigate;
                 @Navigate.performed -= m_Wrapper.m_MinigameActionsCallbackInterface.OnNavigate;
                 @Navigate.canceled -= m_Wrapper.m_MinigameActionsCallbackInterface.OnNavigate;
+                @CloseUI.started -= m_Wrapper.m_MinigameActionsCallbackInterface.OnCloseUI;
+                @CloseUI.performed -= m_Wrapper.m_MinigameActionsCallbackInterface.OnCloseUI;
+                @CloseUI.canceled -= m_Wrapper.m_MinigameActionsCallbackInterface.OnCloseUI;
             }
             m_Wrapper.m_MinigameActionsCallbackInterface = instance;
             if (instance != null)
@@ -1275,6 +1341,9 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
+                @CloseUI.started += instance.OnCloseUI;
+                @CloseUI.performed += instance.OnCloseUI;
+                @CloseUI.canceled += instance.OnCloseUI;
             }
         }
     }
@@ -1290,6 +1359,7 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         void OnSprint(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
+        void OnCloseUI(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1308,5 +1378,6 @@ public partial class @ThirdPersonActionsAsset : IInputActionCollection2, IDispos
         void OnCancel(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
+        void OnCloseUI(InputAction.CallbackContext context);
     }
 }
