@@ -40,20 +40,20 @@ public class BossEventTrigger : MonoBehaviour, ITriggerable
     {
         Anvil.transform.position = new Vector3(BossPos.transform.position.x, Anvil.transform.position.y, BossPos.transform.position.z);
         Anvil.GetComponent<Rigidbody>().isKinematic = false;
-        anim.Play("Squish", 0, 0.0f);
     }
 
     public void SwitchBack()
     {
         if (bossHitCount <= lastCount)
         {
-            // Player Missed! Game Over!
+            Debug.Log("Anvil Missed! End game");
+            GameManager.instance.GoToTheHub();
             Destroy(this);
             return;
         }
         if(bossHitCount >= 2)
         {
-            // Boss Hit 3 Times! Game won!
+            GameManager.instance.OnLevelComplete();
             Destroy(this);
             return;
         }

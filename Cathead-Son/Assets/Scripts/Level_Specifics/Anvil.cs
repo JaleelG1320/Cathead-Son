@@ -9,18 +9,19 @@ public class Anvil : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(TargetMask == (TargetMask | (1 << other.gameObject.layer)))
+        if (TargetMask == (TargetMask | (1 << other.gameObject.layer)))
         {
             count++;
-            if(count > 1)
+            if (count > 1)
             {
-                Destroy(this);
+                Destroy(gameObject);
                 return;
             }
             BossEventTrigger.bossHitCount++;
             GetComponent<Rigidbody>().isKinematic = true;
             Debug.Log("Collision: " + gameObject.name);
-            Destroy(this);
+            Destroy(gameObject);
+            other.gameObject.GetComponentInChildren<Animator>().Play("Squish", 0, 0.0f);
         }
     }
 }
