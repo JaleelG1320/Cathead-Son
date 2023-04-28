@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class CatheadUIScript : MonoBehaviour
 {
-    public GameObject optionsUI;
-    public GameObject startMenuUI;
-    public GameObject controlUI;
-    public GameObject creditsUI;
+    public CanvasGroup optionsUI;
+    public CanvasGroup startMenuUI;
+    public CanvasGroup controlUI;
+    public CanvasGroup creditsUI;
 
     [Header("Level Selection")]
     public GameObject level1CompleteUI;
@@ -93,57 +93,16 @@ public class CatheadUIScript : MonoBehaviour
 
     }
 
-    public void OptionsSelect()
+    public void ToggleCanvasGroup(CanvasGroup group)
     {
+        if (group.alpha == 0)
+        {
+            group.GetComponentInChildren<Button>().Select();
+            group.alpha = 1;
+        }
+        else group.alpha = 0;
 
-        optionsUI.SetActive(true);
-        startMenuUI.SetActive(false);
-
-        Button optionsBackButton = optionsUI.GetComponentInChildren<Button>();
-        optionsBackButton.Select();
-    }
-
-    public void CreditsSelect()
-    {
-
-        creditsUI.SetActive(true);
-        startMenuUI.SetActive(false);
-
-        Button creditsBackButton = creditsUI.GetComponentInChildren<Button>();
-        creditsBackButton.Select();
-    }
-
-    public void ControlSelect()
-    {
-
-        controlUI.SetActive(true);
-        startMenuUI.SetActive(false);
-
-        Button controlBackButton = controlUI.GetComponentInChildren<Button>();
-        controlBackButton.Select();
-    }
-
-    public void OptionsBackSelect()
-    {
-        optionsUI.SetActive(false);
-        startMenuUI.SetActive(true);
-
-        GameManager.instance.GoToMainMenu();
-    }
-
-    public void ControlsBackSelect()
-    {
-        optionsUI.SetActive(false);
-        startMenuUI.SetActive(true);
-
-        GameManager.instance.GoToMainMenu();
-    }
-
-    public void CreditsBackSelect()
-    {
-        optionsUI.SetActive(false);
-        startMenuUI.SetActive(true);
-
-        GameManager.instance.GoToMainMenu();
+        group.blocksRaycasts = !group.blocksRaycasts;
+        group.interactable = !group.interactable;
     }
 }
