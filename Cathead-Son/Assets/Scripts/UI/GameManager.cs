@@ -96,6 +96,7 @@ public class GameManager :  MonoBehaviour
     {
         // set current level to be completed
         currentLevel.isCompleted = true;
+        StartCoroutine(Wait());
         // take player back to hub level
         if (GameManager.instance.officeLevel.isCompleted &&
            GameManager.instance.studioLevel.isCompleted &&
@@ -106,6 +107,7 @@ public class GameManager :  MonoBehaviour
         }
 
         SwitchLevel(this.currentLevel, this.hubLevel);
+        StopCoroutine(Wait());
     }
 
     public void OnLevelFailed()
@@ -254,6 +256,16 @@ public class GameManager :  MonoBehaviour
             loadCanvasGroup.alpha = Mathf.MoveTowards(0f, 0.5f, 0.25f);
         }
     }*/
+
+    private IEnumerator Wait()
+    {
+        _processingReference.FadeCircleOut();
+        yield return new WaitForSeconds(2f);
+        SwitchLevel(this.currentLevel, this.hubLevel);
+        _processingReference.FadeCircleIn();
+        //collided = false;
+        yield break;
+    }
 
 
 }
