@@ -159,6 +159,21 @@ public class GameManager :  MonoBehaviour
 
     }
 
+    public void ResetAllLevels()
+    {
+        foreach (Level i in levelList)
+        {
+            i.isActive = false;
+            i.isCompleted = false;
+        }
+    }
+
+    public void StartGame()
+    {
+        ResetAllLevels();
+        GoToTheHub();
+    }
+
     public void GoToFirstLevel()
     {
         SwitchLevel(this.currentLevel, this.musueumLevel);
