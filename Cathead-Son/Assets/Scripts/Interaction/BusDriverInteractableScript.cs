@@ -36,8 +36,6 @@ public class BusDriverInteractableScript : InteractableObjects
         InputManager._inputActions.Player.Disable();
         InputManager._inputActions.Minigame.Enable();
         InputManager.ToggleActionMap(InputManager._inputActions.UI);
-
-        
     }
 
     public override void OnLoseFocus()
