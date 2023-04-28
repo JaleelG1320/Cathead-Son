@@ -15,6 +15,10 @@ public class CatheadUIScript : MonoBehaviour
     public GameObject level2CompleteUI;
     public GameObject level3CompleteUI;
 
+    public void StartGame()
+    {
+        GameManager.instance.StartGame();
+    }
 
     public void GoToFirstLevel()
     {
