@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class BusDriverInteractableScript : InteractableObjects
 {
+    private bool interacted;
     public GameObject interactPrefab;
     public GameObject levelUI;
     private GameObject interactIcon;
@@ -22,6 +23,7 @@ public class BusDriverInteractableScript : InteractableObjects
 
     public override void OnInteract()
     {
+        interacted = true;
         //turn olma off
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         // spawn ui 
@@ -46,7 +48,7 @@ public class BusDriverInteractableScript : InteractableObjects
 
     public void CloseLevelUI(InputAction.CallbackContext obj)
     {
-        if (GameObject.Find("BusDriver").activeInHierarchy)
+        if (GameObject.Find("BusDriver").activeInHierarchy && interacted)
         {
             if (obj.started)
             {
@@ -62,6 +64,7 @@ public class BusDriverInteractableScript : InteractableObjects
                 InputManager._inputActions.Minigame.Disable();
                 InputManager._inputActions.Player.Enable();
                 InputManager.ToggleActionMap(InputManager._inputActions.Player);
+                interacted = false;
             }
         }
 
