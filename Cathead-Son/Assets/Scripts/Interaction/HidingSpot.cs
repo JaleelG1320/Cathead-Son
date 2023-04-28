@@ -8,10 +8,14 @@ public class HidingSpot: InteractableObjects
     public Camera HidingCam;
     private Vector3 _lastPos;
     public static List<HidingSpot> HidingSpots = new List<HidingSpot>();
+    public AudioClip trigger1;
+    public AudioClip trigger2;
+    AudioSource audioSource;
 
     public void Start()
     {
         HidingSpots.Add(this);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public static void UpdatePlayer(Transform character)
@@ -25,6 +29,7 @@ public class HidingSpot: InteractableObjects
 
         if(IsHidingHere)
         {
+            audioSource.PlayOneShot(trigger1, 0.7F);
             // Hide Player & Disable Releveant Functionality
             PlayerController.GetComponent<CapsuleCollider>().enabled = false;
             PlayerController.GetComponent<Rigidbody>().isKinematic = true;
@@ -41,6 +46,7 @@ public class HidingSpot: InteractableObjects
         }
         else if (!IsHidingHere) // Inverse
         {
+            audioSource.PlayOneShot(trigger2, 0.7F);
             PlayerController.gameObject.transform.position = _lastPos;
             Debug.Log(PlayerController.gameObject.transform.position);
             PlayerController.GetComponent<ThirdPersonController>().IsHiding = false;

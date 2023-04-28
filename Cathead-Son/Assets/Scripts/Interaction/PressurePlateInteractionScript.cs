@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PressurePlateInteractionScript : MonoBehaviour
 {
+    public AudioClip trigger;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,11 +23,13 @@ public class PressurePlateInteractionScript : MonoBehaviour
         if (gameObject.name == "plate_1")
         {
             PressurePlateManager.plate1 = true;
+            audioSource.PlayOneShot(trigger, 0.7F);
         }
 
         if (gameObject.name == "plate_2")
         {
             PressurePlateManager.plate2 = true;
+            audioSource.PlayOneShot(trigger, 0.7F);
         }
     }
 
