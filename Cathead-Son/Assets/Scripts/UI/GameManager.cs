@@ -52,7 +52,6 @@ public class GameManager :  MonoBehaviour
     private Material _grayScaleMaterial;
     private Material _circleWipeMaterial;
 
-
     public static GameManager instance; //reference to game manager script
     
 
@@ -98,6 +97,14 @@ public class GameManager :  MonoBehaviour
         // set current level to be completed
         currentLevel.isCompleted = true;
         // take player back to hub level
+        if (GameManager.instance.officeLevel.isCompleted &&
+           GameManager.instance.studioLevel.isCompleted &&
+           GameManager.instance.musueumLevel.isCompleted)
+        {
+            GameManager.instance.GoToWinScreen();
+            return;
+        }
+
         SwitchLevel(this.currentLevel, this.hubLevel);
     }
 
@@ -198,7 +205,10 @@ public class GameManager :  MonoBehaviour
     {
         SwitchLevel(this.currentLevel, this.infoOffice);
     }
-
+    public void GoToWinScreen()
+    {
+        SwitchLevel(this.currentLevel, this.win_loseLevel);
+    }    
     public void QuitGame()
     {
         Application.Quit();

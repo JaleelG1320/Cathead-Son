@@ -8,9 +8,6 @@ public class WinObjectsManager : MonoBehaviour
     public GameObject _winObject2;
     public GameObject _winObject3;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
