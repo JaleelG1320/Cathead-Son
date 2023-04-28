@@ -28,13 +28,13 @@ EditorBuildSettings:
     guid: 354a5c1cd77a6bc4e9491f3ebf053a66
   - enabled: 1
     path: Assets/Scenes/Transitions/infoLevel1.unity
-    guid: c3ce5acf369a70d40ac8305e7c8a2fa9
+    guid: fe93d5b6e2708da499a2a562b81018d5
   - enabled: 1
     path: Assets/Scenes/Transitions/infoLevel2.unity
-    guid: 616387385c817364aacbd74d441f7582
+    guid: a4121f5033aff404d83b02a4c69bee70
   - enabled: 1
     path: Assets/Scenes/Transitions/infoLevel3.unity
-    guid: a4b9f6493989660468dae14a691b84b4
+    guid: edb865790f6854044a509797b2ae217b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d0df07263313c82458ce43e8a773f4c3, type: 2}
     enabled: {fileID: 0}

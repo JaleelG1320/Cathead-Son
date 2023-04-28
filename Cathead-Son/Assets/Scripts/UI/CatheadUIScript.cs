@@ -22,7 +22,7 @@ public class CatheadUIScript : MonoBehaviour
         {
             return;
         }
-        GameManager.instance.GoToFirstLevel();
+        GameManager.instance.GoToMusuemLevel();
     }
 
     public void GoToSecondLevel()
@@ -31,7 +31,7 @@ public class CatheadUIScript : MonoBehaviour
         {
             return;
         }
-        GameManager.instance.GoToSecondLevel();
+        GameManager.instance.GoToStudioLevel();
     }
 
     public void GoToThirdLevel()
@@ -40,7 +40,7 @@ public class CatheadUIScript : MonoBehaviour
         {
             return;
         }
-        GameManager.instance.GoToThirdLevel();
+        GameManager.instance.GoToOfficeLevel();
     }
 
     public void GoToTheHub()

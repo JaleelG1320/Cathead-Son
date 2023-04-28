@@ -15,6 +15,8 @@ public class BossEventTrigger : MonoBehaviour, ITriggerable
     public static Transform[] idlePositions = new Transform[3];
     GameObject boss;
     public static int bossHitCount = 0;
+    public Animator anim;
+
     public void Awake()
     {
         bossHitCount = 0;
@@ -38,6 +40,7 @@ public class BossEventTrigger : MonoBehaviour, ITriggerable
     {
         Anvil.transform.position = new Vector3(BossPos.transform.position.x, Anvil.transform.position.y, BossPos.transform.position.z);
         Anvil.GetComponent<Rigidbody>().isKinematic = false;
+        anim.Play("Squish", 0, 0.0f);
     }
 
     public void SwitchBack()
