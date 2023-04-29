@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -2426,7 +2426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -3138,15 +3138,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7601743333948078310, guid: 4ef85994dcaa14e43910e721830538bb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.018141435
+      value: -0.01814145
       objectReference: {fileID: 0}
     - target: {fileID: 7601743333948078310, guid: 4ef85994dcaa14e43910e721830538bb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000014901163
+      value: -0.000000014901163
       objectReference: {fileID: 0}
     - target: {fileID: 7601743333948078310, guid: 4ef85994dcaa14e43910e721830538bb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000014901163
+      value: 0.0000000074505815
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ef85994dcaa14e43910e721830538bb, type: 3}
@@ -5851,7 +5851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -9773,7 +9773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -9983,9 +9983,6 @@ MonoBehaviour:
   currentLevel: {fileID: 0}
   _processingReference: {fileID: 0}
   _swapReference: {fileID: 0}
-  loadingScreen: {fileID: 0}
-  tipText: {fileID: 0}
-  loadCanvasGroup: {fileID: 0}
   levelList: []
   _grayScaleShader: {fileID: 0}
   _circleWipeShader: {fileID: 0}
@@ -11051,7 +11048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -14078,7 +14075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -16735,7 +16732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -16956,7 +16953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -18035,7 +18032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -19151,7 +19148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -19956,7 +19953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  outlineColor: {r: 0.9716981, g: 0.91319853, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
