@@ -68,7 +68,7 @@ public class GameManager :  MonoBehaviour
             levelList.Add(infoStudio);
             levelList.Add(infoOffice);
 
-            _grayScaleMaterial = new Material(_grayScaleShader);
+            //_grayScaleMaterial = new Material(_grayScaleShader);
 
             //Cursor.lockState = CursorLockMode.Locked;
 
@@ -99,7 +99,7 @@ public class GameManager :  MonoBehaviour
     {
         // set current level to be completed
         currentLevel.isCompleted = true;
-        StartCoroutine(Wait());
+        
         // take player back to hub level
         if (GameManager.instance.officeLevel.isCompleted &&
            GameManager.instance.studioLevel.isCompleted &&
@@ -110,7 +110,7 @@ public class GameManager :  MonoBehaviour
         }
 
         SwitchLevel(this.currentLevel, this.hubLevel);
-        StopCoroutine(Wait());
+        
     }
 
     public void OnLevelFailed()
