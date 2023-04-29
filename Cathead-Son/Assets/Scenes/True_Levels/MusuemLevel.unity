@@ -1827,6 +1827,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -981004378944408349, guid: d121518103309cd429fd480d23711a36, type: 3}
+--- !u!1 &409279304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2993310024047821212, guid: 8a256bf525004d249afcb23c602c6b58, type: 3}
+  m_PrefabInstance: {fileID: 1614590757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &419764610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3508,7 +3513,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Move - Select New Buttons
 
-    Enter / Button East - Press Button'
+    Enter / Button South - Press Button'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7136,6 +7141,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6389290858386087099, guid: 8a256bf525004d249afcb23c602c6b58, type: 3}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 409279304}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a256bf525004d249afcb23c602c6b58, type: 3}
 --- !u!1 &1619362196 stripped
