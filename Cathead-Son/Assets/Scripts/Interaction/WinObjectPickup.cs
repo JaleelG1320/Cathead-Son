@@ -5,20 +5,20 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class WinObjectPickup : MonoBehaviour
+public class WinObjectPickup : InteractableObjects
 {
-    private void OnCollisionEnter(Collision collision)
+    public override void OnFocus()
     {
-        if (collision.gameObject.tag == "CurrentPlayer")
-        {
-            /*
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            WinLossManager.win = true;
-            WinLossManager.gameEnd = true;
-            */
+        throw new System.NotImplementedException();
+    }
 
-            GameManager.instance.OnLevelComplete();
-        }
+    public override void OnInteract()
+    {
+        GameManager.instance.OnLevelComplete();
+    }
+
+    public override void OnLoseFocus()
+    {
+        throw new System.NotImplementedException();
     }
 }

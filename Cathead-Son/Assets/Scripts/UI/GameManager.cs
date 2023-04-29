@@ -68,6 +68,8 @@ public class GameManager :  MonoBehaviour
             levelList.Add(infoStudio);
             levelList.Add(infoOffice);
 
+            _grayScaleMaterial = new Material(_grayScaleShader);
+
             //Cursor.lockState = CursorLockMode.Locked;
 
             DontDestroyOnLoad(this.gameObject);  //makes sure object isnt destroyed when loading levels
@@ -82,6 +84,12 @@ public class GameManager :  MonoBehaviour
     void Update()
     {
         this.currentLevel = GetActiveLevel();
+    }
+
+    public void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {   
+        Graphics.Blit(source, destination, _grayScaleMaterial);
+        
     }
 
     //controls what happens when the player wins a level
