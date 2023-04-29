@@ -67,21 +67,21 @@ public class SettingsManager : MonoBehaviour
             QualitySettings.vSyncCount = 0;
         }
 
-        //Check if there is a key for the playerprefs for the vsync and set the int depending on it
-        if (PlayerPrefs.HasKey("VFXToggleState"))
-            bwInt = PlayerPrefs.GetInt("VFXToggleState");
-        else
-            bwInt = 1;
+        ////Check if there is a key for the playerprefs for the vsync and set the int depending on it
+        //if (PlayerPrefs.HasKey("VFXToggleState"))
+        //    bwInt = PlayerPrefs.GetInt("VFXToggleState");
+        //else
+        //    bwInt = 1;
 
-        if (bwInt == 1)
-        {
-            bwToggle.isOn = true;
-        }
-        else
-        {
-            bwToggle.isOn = false;
+        //if (bwInt == 1)
+        //{
+        //    bwToggle.isOn = true;
+        //}
+        //else
+        //{
+        //    bwToggle.isOn = false;
             
-        }
+        //}
     }
 
     void Start()

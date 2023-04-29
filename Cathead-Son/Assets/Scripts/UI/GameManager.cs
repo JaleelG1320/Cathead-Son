@@ -73,6 +73,7 @@ public class GameManager :  MonoBehaviour
             //Cursor.lockState = CursorLockMode.Locked;
 
             DontDestroyOnLoad(this.gameObject);  //makes sure object isnt destroyed when loading levels
+            this.currentLevel = this.mainMenuLevel;
         } 
         else 
         {
