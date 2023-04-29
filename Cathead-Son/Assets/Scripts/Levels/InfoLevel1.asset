@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: InfoLevel1
   m_EditorClassIdentifier: 
   isCompleted: 0
-  isActive: 1
+  isActive: 0
   levelNum: 7
   levelObjective: Learn!
   objectiveList: []
