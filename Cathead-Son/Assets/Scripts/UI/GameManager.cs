@@ -86,11 +86,13 @@ public class GameManager :  MonoBehaviour
         this.currentLevel = GetActiveLevel();
     }
 
+    /*
     public void OnRenderImage(RenderTexture source, RenderTexture destination)
     {   
         Graphics.Blit(source, destination, _grayScaleMaterial);
         
     }
+    */
 
     //controls what happens when the player wins a level
     public void OnLevelComplete()

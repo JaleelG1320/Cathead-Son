@@ -9,7 +9,7 @@ public class WinObjectPickup : InteractableObjects
 {
     public override void OnFocus()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void OnInteract()
@@ -19,6 +19,6 @@ public class WinObjectPickup : InteractableObjects
 
     public override void OnLoseFocus()
     {
-        throw new System.NotImplementedException();
+
     }
 }
