@@ -7,6 +7,7 @@ public class WinObjectsManager : MonoBehaviour
     public GameObject _winObject1;
     public GameObject _winObject2;
     public GameObject _winObject3;
+    public GameObject _winObject4;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,14 @@ public class WinObjectsManager : MonoBehaviour
         else
         {
             _winObject3.SetActive(false);
+        }
+        if (GameManager.instance.tutorialLevel.isCompleted)
+        {
+            _winObject4.SetActive(true);
+        }
+        else
+        {
+            _winObject4.SetActive(false);
         }
     }
 

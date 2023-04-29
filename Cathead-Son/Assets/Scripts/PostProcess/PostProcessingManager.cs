@@ -37,7 +37,7 @@ public class PostProcessingManager : MonoBehaviour
     // Update is called once per frame
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {   
-        SwitchShader(source, destination);
+        Graphics.Blit(source, destination, _circleWipeMaterial);
         
     }
 

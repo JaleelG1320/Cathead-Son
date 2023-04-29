@@ -35,13 +35,6 @@ public class GameManager :  MonoBehaviour
     [Header("Script References")]
     [SerializeField] private PostProcessingManager _processingReference;
     [SerializeField] private CharacterSwap _swapReference;
-    //[SerializeField] private PauseMenu _pauseReference;
-
-    [Header("Loading Screen")]
-    public GameObject loadingScreen; //used to toggle the loading screen in and out for levels
-    public TextMeshProUGUI tipText; //reference to text used to display tips
-    public CanvasGroup loadCanvasGroup; //controlling alpha for tip text
-
 
     [Header("Level List")]
     [SerializeField] private List<Level> levelList = new List<Level>();
