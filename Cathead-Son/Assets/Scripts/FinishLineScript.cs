@@ -24,7 +24,7 @@ public class FinishLineScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "CurrentPlayer")
         {
             collided = true;
             StartCoroutine(Wait(collision));
