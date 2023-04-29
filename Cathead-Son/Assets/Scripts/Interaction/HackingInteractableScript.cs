@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 public class HackingInteractableScript : InteractableObjects
 {
     private RenderTexture _minigameRenderer;
@@ -63,6 +63,7 @@ public class HackingInteractableScript : InteractableObjects
         _playerScriptReference.enabled = true;
         anim.Play("Idle", -1, 0f);
         _playerScriptReference.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        UIManager.instance.pauseMenuUI.GetComponentInChildren<Button>().Select();
         InputManager.ToggleActionMap(InputManager._inputActions.Minigame);
         InputManager.ToggleActionMap(InputManager._inputActions.Player);
         CameraSwitcher.SwitchCamera(CameraSwitcher.cameras[CameraSwitcher.cameras.Count - 1]);
