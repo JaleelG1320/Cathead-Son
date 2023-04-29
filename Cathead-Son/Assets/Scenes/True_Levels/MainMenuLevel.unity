@@ -2628,7 +2628,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1533480672}
         m_TargetAssemblyTypeName: CatheadUIScript, Assembly-CSharp
-        m_MethodName: GoToTheHub
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
